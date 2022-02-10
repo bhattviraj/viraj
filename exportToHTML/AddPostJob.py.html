@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>AddPostJob.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AddPostJob.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">time</span>
+<span class="s0">from </span><span class="s1">selenium.webdriver.support.ui </span><span class="s0">import </span><span class="s1">Select</span>
+
+<span class="s0">class </span><span class="s1">AddPostJob:</span>
+    <span class="s2"># Add TodoTask</span>
+    <span class="s1">lnkTodo_menu_name = </span><span class="s3">&quot;To do&quot;</span>
+    <span class="s1">txtTask_name = </span><span class="s3">&quot;name&quot;</span>
+    <span class="s1">btnAddTodo_xpath = </span><span class="s3">&quot;//button[@type='submit']&quot;</span>
+
+
+    <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">driver):</span>
+        <span class="s1">self.driver = driver</span>
+
+    <span class="s0">def </span><span class="s1">clickOnPostSearchJobMenu(self):</span>
+        <span class="s1">self.driver.find_element_by_link_text(self.lnkTodo_menu_name).click()</span>
+
+    <span class="s0">def </span><span class="s1">clickOnAdd(self):</span>
+        <span class="s1">self.driver.find_element_by_link_text(self.lnkTodo_menu_name).click()</span>
+
+    <span class="s0">def </span><span class="s1">drpSyllabus(self):</span>
+        <span class="s1">self.driver.find_element_by_link_text(self.lnkTodo_menu_name).click()</span>
+
+    <span class="s0">def </span><span class="s1">drpSyllabus(self):</span>
+        <span class="s1">self.driver.find_element_by_link_text(self.lnkTodo_menu_name).click()</span>
+
+    <span class="s0">def </span><span class="s1">drpSyllabus(self):</span>
+        <span class="s1">self.driver.find_element_by_link_text(self.lnkTodo_menu_name).click()</span>
+
+    <span class="s0">def </span><span class="s1">setTodo(self</span><span class="s0">,</span><span class="s1">task):</span>
+        <span class="s1">self.driver.find_element_by_name(self.txtTask_name).clear()</span>
+        <span class="s1">self.driver.find_element_by_name(self.txtTask_name).send_keys(task)</span>
+
+    <span class="s0">def </span><span class="s1">clickOnAddTodo(self):</span>
+        <span class="s1">self.driver.find_element_by_xpath(self.btnAddTodo_xpath).click()</span></pre>
+</body>
+</html>
