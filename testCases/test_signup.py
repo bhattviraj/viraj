@@ -56,16 +56,16 @@ for r in range(2, rows + 1):
     drpcity.send_keys(Keys.ENTER)
 
     driver.find_element_by_name("pincode").send_keys(pincode)
-    time.sleep(2)
+    time.sleep(3)
     driver.find_element_by_xpath("//div[@id='root']/div/div/div/div/div/div[2]/div/form/div[11]/div/div/button").click()
     time.sleep(4)
-    if driver.current_url == "http://tutorpark.ssavts.in/#/register-successs":
+    if driver.current_url == "http://tutorpark.ssavts.in/#/register-success":
         print("test id Passed")
-        driver.get("http://tutorpark.ssavts.in/#/register")
+        driver.get("https://tutorpark.ssavts.in/#/register")
         XLUtils.writeData(path, "signup", r, 12, "Test Passed Register Successfully")
     else:
         print("test is Failed")
-        XLUtils.writeData(path, "signup", r, 12, "Test Failed Register Successfully")
+        XLUtils.writeData(path, "signup", r, 12, "Test Failed Not Register Successfully")
         driver.get("http://tutorpark.ssavts.in/#/")
 
 driver.get("http://tutorpark.ssavts.in/#/")

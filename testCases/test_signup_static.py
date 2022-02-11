@@ -28,7 +28,7 @@ class Test_003_signup:
 
         self.signup.setFirstname("Viraj")
         self.signup.setLastname("Bhatt")
-        self.signup.setEmail("viraj75@dasinfomedia.com")
+        self.signup.setEmail("viraj1102@dasinfomedia.com")
         self.signup.setPhone("8965437643")
         self.signup.setAadhar_id("1234567890123456")
         self.signup.setPassword("Viraj123")
@@ -45,10 +45,17 @@ class Test_003_signup:
 
         self.logger.info("********* Add customer validation started *****************")
 
-        exp_url = "http://tutorpark.ssavts.in/#/register-successs"
+        exp_url = "http://tutorpark.ssavts.in/#/register-success"
         act_url = self.driver.current_url
+        exp_alert = "The email has already been taken."
+        act_alert = self.driver.find_element_by_xpath("//div[2]")
+        print(self.driver.find_element_by_xpath("//div[2]").text)
 
         if exp_url == act_url:
+            assert True
+            self.logger.info("********* Signup Test Passed *********")
+
+        elif exp_alert == act_alert:
             assert True
             self.logger.info("********* Signup Test Passed *********")
         else:
