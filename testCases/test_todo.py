@@ -1,4 +1,8 @@
+import unittest
+import allure
 import pytest
+from allure_commons.types import AttachmentType
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.AddTodoPage import AddTodo
 from utilities.readProperties import ReadConfig
@@ -9,12 +13,12 @@ import time
 
 class Test_003_DDT_AddTodo():
     baseURL = ReadConfig.getApplicationURL()
-    path = ".//TestData/TodoData.xlsx"
+    path = r".//TestData/TodoData.xlsx"
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-   # @pytest.mark.regression
+    @pytest.mark.sanity
     def test_addTodo_ddt(self, setup):
         self.logger.info("************* Test_003_AddTodo **********")
         self.driver = setup
@@ -31,7 +35,7 @@ class Test_003_DDT_AddTodo():
         self.logger.info("******* Starting Add Todo Test **********")
         self.todo = AddTodo(self.driver)
 
-        self.todo.clickOnTodoMenu() #Click on Menu Item
+        self.todo.clickOnTodoMenu()  # Click on Menu Item
         time.sleep(4)
 
         self.rows = XLUtils.getRowCount(self.path, 'Sheet1')
@@ -54,8 +58,14 @@ class Test_003_DDT_AddTodo():
             self.logger.info("********* Add customer Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            allure.attach(self.driver.get_screenshot_as_png(), name="TestTodoScreen",
+                          attachment_type=AttachmentType.PNG)
             self.logger.error("********* Add customer Test Failed ************")
             assert False
 
         self.driver.close()
         self.logger.info("******* Ending Add customer test **********")
+
+
+if __name__ == "__main__":
+    unittest.main()

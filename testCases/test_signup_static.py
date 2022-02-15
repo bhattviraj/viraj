@@ -1,5 +1,8 @@
 import pytest
 import time
+import allure
+from allure_commons.types import AttachmentType
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.SignupPage import Signup
 from utilities.readProperties import ReadConfig
@@ -7,13 +10,14 @@ from utilities.customLogger import LogGen
 import string
 import random
 
-
+@allure.Severity(allure.severity_level.CRITICAL)
 class Test_003_signup:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
+    @pytest.mark.sanity
     def test_signup(self, setup):
         self.logger.info("************* Test_003_Signup **********")
         self.driver = setup
@@ -28,7 +32,7 @@ class Test_003_signup:
 
         self.signup.setFirstname("Viraj")
         self.signup.setLastname("Bhatt")
-        self.signup.setEmail("viraj1102@dasinfomedia.com")
+        self.signup.setEmail("viraj2122@dasinfomedia.com")
         self.signup.setPhone("8965437643")
         self.signup.setAadhar_id("1234567890123456")
         self.signup.setPassword("Viraj123")
@@ -59,6 +63,8 @@ class Test_003_signup:
             assert True
             self.logger.info("********* Signup Test Passed *********")
         else:
+            allure.attach(self.driver.get_screenshot_as_png(), name="TestTodoScreen",
+                          attachment_type=AttachmentType.PNG)
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
             self.logger.error("********* Signup Test Failed ************")
             assert False

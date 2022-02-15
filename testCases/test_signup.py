@@ -1,4 +1,4 @@
-import time
+'''import time
 from selenium import webdriver
 from utilities import XLUtils
 from selenium.webdriver.common.by import By
@@ -68,4 +68,4 @@ for r in range(2, rows + 1):
         XLUtils.writeData(path, "signup", r, 12, "Test Failed Not Register Successfully")
         driver.get("http://tutorpark.ssavts.in/#/")
 
-driver.get("http://tutorpark.ssavts.in/#/")
+driver.get("http://tutorpark.ssavts.in/#/" '''

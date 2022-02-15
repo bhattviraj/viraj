@@ -1,4 +1,7 @@
+import allure
 import pytest
+from allure_commons.types import AttachmentType
+
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
@@ -10,7 +13,10 @@ class Test_002_DDT_Login():
     baseURL = ReadConfig.getApplicationURL()
     path = ".//TestData/LoginData.xlsx"
     logger = LogGen.loggen()  # Logger
-   # @pytest.mark.regression
+
+    @pytest.mark.sanity
+    @allure.Severity(allure.severity_level.NORMAL)
+    @allure.suite
     def test_login_ddt(self, setup):
         self.logger.info("******* Starting Test_002_DDT_Login Test **********")
         self.logger.info("******* Starting Login DDT Test **********")
@@ -43,12 +49,16 @@ class Test_002_DDT_Login():
                     self.lp.clickLogout()
                     lst_status.append("Pass1")
                 elif self.exp == 'Fail':
+                    allure.attach(self.driver.get_screenshot_as_png(), name="TestTodoScreen",
+                                  attachment_type=AttachmentType.PNG)
                     self.logger.info("**** failed ****")
                     self.lp.clickLogout();
                     lst_status.append("Fail")
 
             elif act_home_url != exp_home_url:
                 if self.exp == 'Pass':
+                    allure.attach(self.driver.get_screenshot_as_png(), name="TestTodoScreen",
+                                  attachment_type=AttachmentType.PNG)
                     self.logger.info("**** failed ****")
                     lst_status.append("Fail")
                 elif self.exp == 'Fail':
