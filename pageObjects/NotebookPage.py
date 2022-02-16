@@ -1,7 +1,7 @@
 class notebook:
     # Notebook
     lnkNotebook_name = "Notebook"
-    lnkMoreItems_xpath="//*[@id='root']/div/div[2]/div[1]/div[2]/div[8]/div/button/div/div"
+    lnkMoreItems_xpath="//*[@id='root']/div/div[2]/div[1]/div/div[8]/div/button"
     txtSearch_xpath="//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[2]/input"
     btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[2]/button"
 

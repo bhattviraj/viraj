@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+
 #conftest
 @pytest.fixture()
 def setup(browser):
@@ -25,7 +26,7 @@ def browser(request):  # This will return the Browser value to setup method
 # It is hook for Adding Environment info to HTML Report
 def pytest_configure(config):
     config._metadata['Project Name'] = 'TutorPark'
-    config._metadata['Module Name'] = 'Tutorpark Login'
+    config._metadata['Module Name'] = 'Tutorpark'
     config._metadata['Tester'] = 'Viraj'
 
 # It is hook for delete/Modify Environment info to HTML Report

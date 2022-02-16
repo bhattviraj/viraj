@@ -1,7 +1,7 @@
 class course:
     # Course
 
-    lnkMoreItems_xpath = "//div[@id='root']/div/div[2]/div/div[2]/div[8]/div/button/div/div/img"
+    lnkMoreItems_xpath = "//*[@id='root']/div/div[2]/div[1]/div/div[8]/div/button"
     lnkCourse_name = "Course"
 
     btnAdd_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div/button"
@@ -14,7 +14,7 @@ class course:
     drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[10]"
 
     drpOpenClass_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[2]/div/div"
-    drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[2]"
+    drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[3]"
 
     drpOpenSubject_xpath = "/html/body/div[2]/div/div/div[2]/form/div[3]/div[1]/div/div"
     drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[4]"
@@ -27,22 +27,23 @@ class course:
     txtStartDate_xpath = "/html/body/div[2]/div/div/div[2]/form/div[4]/div[2]/div/div/input"
     txtEndDate_xpath = "/html/body/div[2]/div/div/div[2]/form/div[5]/div[1]/div/div/input"
 
-    uploadSampleImage_xpath="/html/body/div[2]/div/div/div[2]/form/div[6]/div[2]/div/div/input"
-    uploadDemoVideo_xpath="/html/body/div[2]/div/div/div[2]/form/div[7]/div[1]/div/div/input"
+    uploadSampleImage_xpath = "/html/body/div[2]/div/div/div[2]/form/div[6]/div[2]/div/div/input"
+    uploadDemoVideo_xpath = "/html/body/div[2]/div/div/div[2]/form/div[7]/div[1]/div/div/input"
     uploadLogo_xpath = "/html/body/div[2]/div/div/div[2]/form/div[7]/div[2]/div/div/input"
 
-    txtNumberOfVideos_xpath="/html/body/div[2]/div/div/div[2]/form/div[8]/div[1]/div/div/input"
-    txtNumberOfAssignements="/html/body/div[2]/div/div/div[2]/form/div[8]/div[2]/div/div/input"
+    txtNumberOfVideos_xpath = "/html/body/div[2]/div/div/div[2]/form/div[8]/div[1]/div/div/input"
+    txtNumberOfAssignements = "/html/body/div[2]/div/div/div[2]/form/div[8]/div[2]/div/div/input"
 
-    radiobtnCourseType="//input[@name='course_type']"
+    txtCourseTopics_xpath = "/html/body/div[2]/div/div/div[2]/form/div[9]/div[2]/div/div/input"
+
+    radiobtnCourseType = "//input[@name='course_type']"
 
     txtAreaDescription_xpath = "//*[@id='outlined-multiline-static']"
 
+    btnSubmit_xpath = "/html/body/div[2]/div/div/div[2]/form/div[13]/div/div[1]/button"
 
-    btnSubmit_xpath = "/html/body/div[2]/div/div/div[2]/form/div[11]/div/div[1]/button"
-
-    txtSearch_xpath = "//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div/div/div[2]/div[2]/input"
-    btnSearch_xpath = "(//button[@type='button'])[4]"
+    txtSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/input"
+    btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/button"
 
     def __init__(self, driver):
         self.driver = driver
@@ -111,6 +112,10 @@ class course:
         self.driver.find_element_by_xpath(self.txtNumberOfAssignements).clear()
         self.driver.find_element_by_xpath(self.txtNumberOfAssignements).send_keys(course)
 
+    def setCourseTopics(self, course):
+        self.driver.find_element_by_xpath(self.txtCourseTopics_xpath).clear()
+        self.driver.find_element_by_xpath(self.txtCourseTopics_xpath).send_keys(course)
+
     def selectCourseType(self):
         self.driver.find_element_by_xpath(self.radiobtnCourseType).click()
 
@@ -121,7 +126,7 @@ class course:
     def clickOnSubmit(self):
         self.driver.find_element_by_xpath(self.btnSubmit_xpath).click()
 
-    def setSearchTuition(self, tuition):
+    def setSearchCourse(self, tuition):
         self.driver.find_element_by_xpath(self.txtSearch_xpath).clear()
         self.driver.find_element_by_xpath(self.txtSearch_xpath).send_keys(tuition)
 

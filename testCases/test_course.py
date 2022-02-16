@@ -14,7 +14,7 @@ class Test_014_course:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-
+    @pytest.mark.sanity
     def test_course(self, setup):
         self.logger.info("************* Test_014_course **********")
         self.driver = setup
@@ -57,42 +57,46 @@ class Test_014_course:
         self.course.drpMode()
         self.course.setCost("1111")
 
-        #self.course.setStartDate("13/01/2022")
+        # self.course.setStartDate("13/01/2022")
 
-        #self.course.setEndDate("30/01/2022")
+        # self.course.setEndDate("30/01/2022")
         time.sleep(5)
         self.course.setSmapleImage("D:/Documents/Downloads/network.jpg")
         time.sleep(5)
-        self.course.setDemoVideo("D:/Documents/Downloads/demo.mp4")
+        self.course.setDemoVideo("D:/Documents/Downloads/demo1.mp4")
         self.course.setLogo("D:/Documents/Downloads/network.jpg")
         self.course.setNumberOfVideos("1")
         self.course.setNumberOfAssignements("1")
+        self.course.setCourseTopics("1")
         self.course.selectCourseType()
         self.course.setDescription("Test course")
-        time.sleep(6)
+        time.sleep(4)
         self.course.clickOnSubmit()
-
+        time.sleep(6)
         self.logger.info("************* Saving course info **********")
 
         self.logger.info("********* Add course validation started *****************")
 
         self.msg = self.driver.find_element_by_tag_name("body").text
         print(self.msg)
-        if 'Course Added Successfully.' in self.msg:
+        exp_alert = "Course created successfully."
+        # act_alert = self.driver.find_element_by_xpath("//div[2]")
+        if 'Course created successfully.' in self.msg:
             assert True
             time.sleep(3)
             self.logger.info("********* Add  course Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
-            self.logger.error("********* Add customer Test Failed ************")
+            self.logger.error("********* Add course Test Failed ************")
             assert False
 
         self.driver.close()
         self.logger.info("******* Ending Add course test **********")
 
-    """def test_searchcourse(self,setup):
+    @pytest.mark.sanity
+    def test_searchcourse(self, setup):
         self.logger.info("************* Test_010_search course **********")
-        self.driver=setup
+        self.driver = setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
@@ -105,12 +109,14 @@ class Test_014_course:
         self.logger.info("******* Starting Search Post Test **********")
         self.course = course(self.driver)
         time.sleep(5)
-        self.course.clickOncourseMenu() # Click on Menu Item
-        time.sleep(5)
+        self.course.clickOnMoreItems()
+        time.sleep(2)
+        self.course.clickOnCourseMenu()  # Click on Menu Item
+        time.sleep(4)
 
         self.logger.info("************* Search course**********")
 
-        searched_value = self.course.setSearchcourse("Literature:")
+        searched_value = self.course.setSearchCourse("Demo")
         time.sleep(3)
         self.course.clickOnSearch()
         time.sleep(3)
@@ -122,9 +128,12 @@ class Test_014_course:
         self.msg = self.driver.find_element_by_tag_name("body").text
         print(self.msg)
 
-        if "Literature:" in self.msg:
+        if "Demo" in self.msg:
             assert True
             time.sleep(2)
+            self.logger.info("********* Test Passed *********")
+        elif "Course data not available..." in self.msg:
+            assert True
             self.logger.info("********* Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
@@ -132,4 +141,4 @@ class Test_014_course:
             assert False
 
         self.driver.close()
-        self.logger.info("******* Ending test **********")"""
+        self.logger.info("******* Ending test **********")

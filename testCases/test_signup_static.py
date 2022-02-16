@@ -10,15 +10,16 @@ from utilities.customLogger import LogGen
 import string
 import random
 
-@allure.Severity(allure.severity_level.CRITICAL)
+@pytest.mark.sanity
 class Test_003_signup:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.sanity
+
     def test_signup(self, setup):
+
         self.logger.info("************* Test_003_Signup **********")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -32,7 +33,7 @@ class Test_003_signup:
 
         self.signup.setFirstname("Viraj")
         self.signup.setLastname("Bhatt")
-        self.signup.setEmail("viraj2122@dasinfomedia.com")
+        self.signup.setEmail("viraj541@dasinfomedia.com")
         self.signup.setPhone("8965437643")
         self.signup.setAadhar_id("1234567890123456")
         self.signup.setPassword("Viraj123")

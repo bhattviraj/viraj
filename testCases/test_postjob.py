@@ -6,7 +6,8 @@ from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 import string
 import random
-
+import warnings
+warnings.filterwarnings("ignore")
 
 class Test_0008_postJob:
     baseURL = ReadConfig.getApplicationURL()
@@ -14,7 +15,7 @@ class Test_0008_postJob:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-
+    @pytest.mark.sanity
     def test_postJob(self, setup):
         self.logger.info("************* Test_008_PostJob **********")
         self.driver = setup
@@ -79,6 +80,7 @@ class Test_0008_postJob:
         self.driver.close()
         self.logger.info("******* Ending Add Post Job test **********")
 
+    @pytest.mark.sanity
     def test_searchJob(self,setup):
         self.logger.info("************* Test_008_search Job **********")
         self.driver=setup
@@ -111,7 +113,7 @@ class Test_0008_postJob:
         self.msg = self.driver.find_element_by_tag_name("body").text
         print(self.msg)
 
-        if "Literature" in self.msg:
+        if "Viraj" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")

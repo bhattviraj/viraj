@@ -12,6 +12,7 @@ class Test_006_FindTutor:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
+    @pytest.mark.sanity
     def test_findtutor(self,setup):
         self.logger.info("************* Test_006_FindTutor **********")
         self.driver=setup
@@ -44,7 +45,7 @@ class Test_006_FindTutor:
         self.msg = self.driver.find_element_by_tag_name("body").text
         print(self.msg)
 
-        if "viraj" in self.msg:
+        if "Viraj" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Add customer Test Passed *********")
@@ -56,6 +57,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Add customer test **********")
 
+    @pytest.mark.sanity
     def test_findtuor_with_city(self,setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -105,6 +107,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
+    @pytest.mark.sanity
     def test_findtuor_with_syllabus(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -155,6 +158,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
+    @pytest.mark.sanity
     def test_findtuor_with_syllabus_and_class(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -207,6 +211,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
+    @pytest.mark.sanity
     def test_findtuor_with_syllabus_class_and_subject(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -259,6 +264,8 @@ class Test_006_FindTutor:
 
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
+
+    @pytest.mark.sanity
     def test_findtuor_with_mode(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -309,6 +316,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
+    @pytest.mark.sanity
     def test_findtuor_with_gender(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -359,6 +367,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
+    @pytest.mark.sanity
     def test_findtutor_with_Experience(self, setup):
         self.logger.info("************* Test_006_FindTutor **********")
         self.driver = setup
@@ -395,6 +404,9 @@ class Test_006_FindTutor:
             assert True
             time.sleep(2)
             self.logger.info("********* Add customer Test Passed *********")
+        elif "Find Tutor data not available..." in self.msg:
+            assert True
+            self.logger.info("********* Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
             self.logger.error("********* Find Tutor Test Failed ************")

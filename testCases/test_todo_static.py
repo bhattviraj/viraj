@@ -13,8 +13,6 @@ class Test_003_AddTodo:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.sanity
-    @pytest.mark.regression
     def test_addTodo(self,setup):
         self.logger.info("************* Test_003_AddCustomer **********")
         self.driver=setup
