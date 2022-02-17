@@ -1,3 +1,5 @@
+import unittest
+
 import pytest
 import time
 from pageObjects.LoginPage import LoginPage
@@ -16,7 +18,7 @@ class Test_0009_TextBook:
     logger = LogGen.loggen()  # Logger
 
 
-    def test_TextBook(self, setup):
+    '''def test_TextBook(self, setup):
         self.logger.info("************* Test_009_Add_Text_Book **********")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -278,4 +280,44 @@ class Test_0009_TextBook:
                 assert False
 
             self.driver.close()
-            self.logger.info("******* Ending Search Text Book test **********")
+            self.logger.info("******* Ending Search Text Book test **********")'''
+
+    def test_delete_textbook(self, setup):
+
+        self.logger.info("************* Test_154_Delete Text Book**********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
+
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
+
+        self.logger.info("******* Starting Delete Text Book Test **********")
+        self.delete_textbook = TextBook(self.driver)
+        time.sleep(5)
+        self.delete_textbook.clickOnTextBookMenu()  # Click on Menu Item
+        time.sleep(4)
+
+        self.delete_textbook.clickOnOption()
+        time.sleep(2)
+        self.delete_textbook.clickOnDelete()
+
+        self.logger.info("********* Delete Text Book validation started *****************")
+        time.sleep(5)
+        self.msg = self.driver.find_element_by_tag_name("body").text
+        print(self.msg)
+
+        if "TextBook deleted from database." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Delete Text Book Test Passed *********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            self.logger.error("********* Search Text Book Test Failed ************")
+            assert False
+
+        self.driver.close()
+        self.logger.info("******* Ending Delete Text Book test **********")

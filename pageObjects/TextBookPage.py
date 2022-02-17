@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class TextBook:
     # TexBook
-    lnkText_book_name = "Text Book"
+    lnkText_book_name = "Textbook"
     btnAdd_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/button"
 
     drpOpenSyllabus_xpath = "/html/body/div[2]/div/div/div[2]/form/div[1]/div[1]/div/div"
@@ -32,6 +32,10 @@ class TextBook:
 
     txtSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div[2]/div[2]/input"
     btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div[2]/div[2]/button"
+
+    btnClickonOption_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div[2]/div[1]/div/div[1]/div/li/a/img"
+    btnClickonDelete_xpath = "//a[contains(text(),'Delete')]"
+    btnClickOnConfirnDelete_xpath = "/html/body/div[2]/div/div[3]/button[1]"
 
     def __init__(self, driver):
         self.driver = driver
@@ -80,3 +84,10 @@ class TextBook:
 
     def clickOnSearch(self):
         self.driver.find_element_by_xpath(self.btnSearch_xpath).click()
+
+    def clickOnOption(self):
+        self.driver.find_element_by_xpath(self.btnClickonOption_xpath).click()
+
+    def clickOnDelete(self):
+        self.driver.find_element_by_xpath(self.btnClickonDelete_xpath).click()
+        self.driver.find_element_by_xpath(self.btnClickOnConfirnDelete_xpath).click()

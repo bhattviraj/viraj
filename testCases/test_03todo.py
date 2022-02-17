@@ -2,6 +2,8 @@ import unittest
 import allure
 import pytest
 from allure_commons.types import AttachmentType
+from selenium.webdriver import Keys
+from selenium.webdriver.common.by import By
 
 from pageObjects.LoginPage import LoginPage
 from pageObjects.AddTodoPage import AddTodo
@@ -17,6 +19,7 @@ class Test_003_DDT_AddTodo():
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
+
 
     @pytest.mark.sanity
     def test_addTodo_ddt(self, setup):
@@ -66,6 +69,43 @@ class Test_003_DDT_AddTodo():
         self.driver.close()
         self.logger.info("******* Ending Add customer test **********")
 
+
+    @pytest.mark.sanity
+    def test_todo_delete(self, setup):
+        self.logger.info("************* Test_0011_Delete Todo **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
+
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        time.sleep(5)
+        self.logger.info("************* Login Successful **********")
+
+        self.logger.info("******* Starting Delete Todo Test **********")
+        self.todo = AddTodo(self.driver)
+
+        self.todo.clickOnTodoMenu()  # Click on Menu Item
+        time.sleep(4)
+
+        self.todo.clickOnDelete()
+        time.sleep(3)
+
+        self.msg = self.driver.find_element_by_tag_name("div").text
+        if 'Todos deleted from database.' in self.msg:
+            assert True
+            self.logger.info("********* Delete Todo Test Passed *********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            allure.attach(self.driver.get_screenshot_as_png(), name="TestTodoScreen",
+                          attachment_type=AttachmentType.PNG)
+            self.logger.error("********* Delete Todo Test Failed ************")
+            assert False
+
+        self.driver.close()
+        self.logger.info("******* Ending Delete Todo test **********")
 
 if __name__ == "__main__":
     unittest.main()

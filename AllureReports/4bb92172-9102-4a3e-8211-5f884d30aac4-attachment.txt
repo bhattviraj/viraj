@@ -1,5 +1,0 @@
-[32mINFO    [0m root:test_todo.py:23 ************* Test_003_AddTodo **********
-[32mINFO    [0m root:test_todo.py:33 ************* Login Successful **********
-[32mINFO    [0m root:test_todo.py:35 ******* Starting Add Todo Test **********
-[32mINFO    [0m root:test_todo.py:58 ********* Add customer Test Passed *********
-[32mINFO    [0m root:test_todo.py:67 ******* Ending Add customer test **********

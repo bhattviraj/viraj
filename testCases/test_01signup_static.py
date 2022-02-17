@@ -27,7 +27,7 @@ class Test_003_signup:
         self.driver.get("http://tutorpark.ssavts.in/#/register")
         self.logger.info("******* Starting Signup **********")
         self.signup = Signup(self.driver)
-        time.sleep(5)
+        time.sleep(8)
 
         self.logger.info("************* Providing customer info **********")
 
