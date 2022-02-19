@@ -2,12 +2,16 @@ import pytest
 from selenium import webdriver
 
 #conftest
+from selenium.webdriver.chrome.service import Service
+
+
 @pytest.fixture()
 def setup(browser):
     if browser=='chrome':
         options = webdriver.ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
-        driver=webdriver.Chrome(r"E:\Viraj\chromedriver_win32\chromedriver.exe",options=options)
+        s = Service(r"E:\Viraj\chromedriver_win32\chromedriver.exe")
+        driver=webdriver.Chrome(service=s,options=options)
         print("Launching chrome browser.........")
     elif browser=='firefox':
         driver = webdriver.Firefox()

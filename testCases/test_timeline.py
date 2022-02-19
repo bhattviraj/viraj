@@ -1,18 +1,19 @@
+import unittest
+
 import pytest
 import time
 from pageObjects.LoginPage import LoginPage
-from pageObjects.AddPostJob import AddPostJob
+from pageObjects.timelinePage import Timeline
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
-class Test_0008_postJob:
+class Test_0018_Timeline:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-
-    def test_postJob(self, setup):
+    def test_AddTimeline(self, setup):
         self.logger.info("************* Test_008_PostJob **********")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -25,37 +26,28 @@ class Test_0008_postJob:
 
         self.logger.info("************* Login successful **********")
 
-        self.logger.info("******* Starting Add Post Job Test **********")
-        self.postjob = AddPostJob(self.driver)
+        self.logger.info("******* Starting timeline Test **********")
+        self.timeline = Timeline(self.driver)
         time.sleep(3)
-        self.postjob.clickOnPostSearchJobMenu()  # Click on Menu Item
-        time.sleep(4)
-        self.postjob.clickOnAdd()  # Click On Add Button
+        self.timeline.clickOnTimelineMenu() # Click on Menu Item
+        time.sleep(8)
+        self.timeline.clickOnAdd()  # Click On Add Button
         time.sleep(4)
         main_page = self.driver.current_window_handle
         # changing the handles to access login page
         for handle in self.driver.window_handles:
             if handle != main_page:
                 login_page = handle
-                # change the control to signin page
+                # change the control to page
                 self.driver.switch_to.window(login_page)
-                self.logger.info("************* Providing Post Job info **********")
+                self.logger.info("************* Providing Timeline info **********")
 
-        self.postjob.drpSyllabus()
+        self.timeline.drpTargetAudience()
         time.sleep(3)
-        self.postjob.drpClass()
-        time.sleep(3)
-        self.postjob.drpSubject()
-        time.sleep(2)
-        self.postjob.drpMode()
-        self.postjob.radioTeachType()
-        self.postjob.setTopic("Hindi Basic")
-        #self.postjob.setStarTime("09:00 am")
-
-        #self.postjob.setEndTime("10:00 am")
-
-        self.postjob.setRequirements("Test requirements")
-        self.postjob.clickOnSubmit()
+        self.timeline.setDescription("Demo Timeline")
+        self.timeline.setTimelineImage("D:/Documents/Downloads/network.jpg")
+        #self.timeline.setTimelineVideo("D:/Documents/Downloads/network.jpg")
+        self.timeline.clickOnSubmit()
         time.sleep(3)
 
         self.logger.info("************* Saving Post Job info **********")
@@ -64,7 +56,7 @@ class Test_0008_postJob:
 
         self.msg = self.driver.find_element_by_tag_name("body").text
         print(self.msg)
-        if 'Job Posted Successfully.' in self.msg:
+        if 'Timeline posted successfully.' in self.msg:
             assert True
             time.sleep(3)
             self.logger.info("********* Add  Post Job Test Passed *********")
@@ -74,10 +66,11 @@ class Test_0008_postJob:
             assert False
 
         self.driver.close()
-        self.logger.info("******* Ending Add Post Job test **********")
+        self.logger.info("******* Ending timeline test **********")
 
-    def test_searchJob(self,setup):
-        self.logger.info("************* Test_008_search Job **********")
+    @unittest.skip
+    def test_searchTimeline(self,setup):
+        self.logger.info("************* Test_018_timeline **********")
         self.driver=setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
@@ -89,32 +82,120 @@ class Test_0008_postJob:
         self.logger.info("************* Login successful **********")
 
         self.logger.info("******* Starting Search Post Test **********")
-        self.postjob = AddPostJob(self.driver)
+        self.timeline = Timeline(self.driver)
         time.sleep(5)
-        self.postjob.clickOnPostSearchJobMenu() # Click on Menu Item
+        self.timeline.clickOnTimelineMenu() # Click on Menu Item
         time.sleep(5)
 
         self.logger.info("************* Search Post Job**********")
 
-        searched_value = self.postjob.setSearchJob("viraj")
+        searched_value = self.timeline.setSearchTimeline("viraj")
 
-        self.postjob.clickOnSearch()
+        self.timeline.clickOnSearch()
         time.sleep(3)
 
-        self.logger.info("************* Searching Post **********")
+        self.logger.info("************* Searching Timeline **********")
 
-        self.logger.info("********* Search Post job validation started *****************")
+        self.logger.info("********* Search Timeline validation started *****************")
 
         self.msg = self.driver.find_element_by_tag_name("body").text
         print(self.msg)
 
-        if "Literature" in self.msg:
+        if "Viraj" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
         else:
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
-            self.logger.error("********* Search Coursetor Test Failed ************")
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_SearchTimeline_scr.png")  # Screenshot
+            self.logger.error("********* Search Timeline Test Failed ************")
+            assert False
+
+        self.driver.close()
+        self.logger.info("******* Ending test **********")
+
+    def test_timelineRepost(self,setup):
+        self.logger.info("************* Test_018_timeline **********")
+        self.driver=setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
+
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
+
+        self.logger.info("******* Starting Repost Timeline Test **********")
+        self.timeline = Timeline(self.driver)
+        time.sleep(5)
+        self.timeline.clickOnTimelineMenu() # Click on Menu Item
+        time.sleep(5)
+
+        self.logger.info("************* Repost Timeline**********")
+
+        self.timeline.clickOnoption()
+        time.sleep(2)
+        self.timeline.clickOnTimelineRepost()
+        time.sleep(3)
+        self.logger.info("************* Repost Timeline **********")
+
+        self.logger.info("********* Repost Timeline validation started *****************")
+
+        self.msg = self.driver.find_element_by_tag_name("body").text
+        print(self.msg)
+
+        if "Timeline posted successfully." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Test Passed *********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_SearchTimeline_scr.png")  # Screenshot
+            self.logger.error("********* Search Timeline Test Failed ************")
+            assert False
+
+        self.driver.close()
+        self.logger.info("******* Ending test **********")
+
+    def test_DeleteMyTimeline(self,setup):
+        self.logger.info("************* Test_018_timeline **********")
+        self.driver=setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
+
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
+
+        self.logger.info("******* Starting Delete My Timeline Test **********")
+        self.timeline = Timeline(self.driver)
+        time.sleep(5)
+        self.timeline.clickOnTimelineMenu() # Click on Menu Item
+        time.sleep(5)
+
+        self.logger.info("*************Delete My Timeline**********")
+
+        self.timeline.clickOnMyTimeline()
+        time.sleep(3)
+        self.timeline.clickOnMytimelineOption()
+        time.sleep(3)
+        self.timeline.clickOnDeleteMytimeline()
+        time.sleep(3)
+        self.logger.info("*************Delete My Timeline **********")
+
+        self.logger.info("*********Delete My validation started *****************")
+
+        self.msg = self.driver.find_element_by_tag_name("body").text
+        print(self.msg)
+
+        if "Timeline deleted from successfully." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Test Passed *********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_SearchTimeline_scr.png")  # Screenshot
+            self.logger.error("*********Delete My Test Failed ************")
             assert False
 
         self.driver.close()

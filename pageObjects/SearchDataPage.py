@@ -6,7 +6,7 @@ class Search():
     txtFind_city_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[3]/div/div[1]/input"
     lnkFindtutor_menu_name = "Find tutor"
     lnkSearchCourse_menu_name="Search Course"
-    lnkText_book_name = "Text Book"
+    lnkText_book_name = "Textbook"
     btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/button"
     sltSyllabus="syllabus_id"
     sltClass="class_id"

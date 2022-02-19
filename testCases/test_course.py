@@ -1,3 +1,5 @@
+import unittest
+
 import pytest
 import time
 from pageObjects.LoginPage import LoginPage
@@ -138,6 +140,51 @@ class Test_014_course:
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
             self.logger.error("********* Search course Test Failed ************")
+            assert False
+
+        self.driver.close()
+        self.logger.info("******* Ending test **********")
+
+    def test_Deletecourse(self, setup):
+        self.logger.info("************* Test_018_course **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
+
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
+
+        self.logger.info("******* Starting Delete course Test **********")
+        self.course = course(self.driver)
+        time.sleep(5)
+        self.course.clickOnMoreItems()
+        time.sleep(2)
+        self.course.clickOnCourseMenu()  # Click on Menu Item
+        time.sleep(5)
+
+        self.logger.info("*************Delete course**********")
+
+        self.course.clickOnAllCoursesOption()
+        time.sleep(3)
+        self.course.clickOnDeleteCourse()
+        time.sleep(3)
+        self.logger.info("*************Delete course **********")
+
+        self.logger.info("*********Delete course validation started *****************")
+
+        self.msg = self.driver.find_element_by_tag_name("body").text
+        print(self.msg)
+
+        if "Course deleted from database." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Test Passed *********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_Searchcourse_scr.png")  # Screenshot
+            self.logger.error("*********Delete My Test Failed ************")
             assert False
 
         self.driver.close()

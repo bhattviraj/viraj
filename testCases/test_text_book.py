@@ -17,8 +17,7 @@ class Test_0009_TextBook:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-
-    '''def test_TextBook(self, setup):
+    def test_TextBook(self, setup):
         self.logger.info("************* Test_009_Add_Text_Book **********")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -99,7 +98,7 @@ class Test_0009_TextBook:
 
             self.logger.info("************* Search Text Book **********")
 
-            searched_value = self.searchtextbook.drpSyllabus("CBSE")
+            self.searchtextbook.drpSyllabus("CBSE")
 
             self.searchtextbook.clickTextBookSearchGo()
             time.sleep(3)
@@ -109,7 +108,6 @@ class Test_0009_TextBook:
             self.logger.info("********* Search Text Book validation started *****************")
 
             self.msg = self.driver.find_element_by_tag_name("body").text
-            print(self.msg)
 
             if "CBSE" in self.msg:
                 assert True
@@ -118,8 +116,7 @@ class Test_0009_TextBook:
             elif "Search data not available..." in self.msg:
                 assert True
                 time.sleep(2)
-                self.logger.info(
-                    "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
+                self.logger.info("********* Search Text Book Test Passed because return Search Text Book data not available...*********")
             else:
                 self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
                 self.logger.error("********* Search Text Book Test Failed ************")
@@ -169,8 +166,7 @@ class Test_0009_TextBook:
             elif "Search data not available..." in self.msg:
                 assert True
                 time.sleep(2)
-                self.logger.info(
-                    "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
+                self.logger.info("********* Search Text Book Test Passed because return Search Text Book data not available...*********")
             else:
                 self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
                 self.logger.error("********* Search Text Book Test Failed ************")
@@ -263,7 +259,6 @@ class Test_0009_TextBook:
             self.logger.info("********* Search Text Book validation started *****************")
 
             self.msg = self.driver.find_element_by_tag_name("body").text
-            print(self.msg)
 
             if "CBSE" in self.msg:
                 assert True
@@ -280,7 +275,7 @@ class Test_0009_TextBook:
                 assert False
 
             self.driver.close()
-            self.logger.info("******* Ending Search Text Book test **********")'''
+            self.logger.info("******* Ending Search Text Book test **********")
 
     def test_delete_textbook(self, setup):
 
@@ -306,7 +301,7 @@ class Test_0009_TextBook:
         self.delete_textbook.clickOnDelete()
 
         self.logger.info("********* Delete Text Book validation started *****************")
-        time.sleep(5)
+        time.sleep(3)
         self.msg = self.driver.find_element_by_tag_name("body").text
         print(self.msg)
 

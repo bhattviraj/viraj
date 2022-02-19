@@ -1,3 +1,8 @@
+import time
+
+from selenium.webdriver.common.by import By
+
+
 class course:
     # Course
 
@@ -14,7 +19,7 @@ class course:
     drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[10]"
 
     drpOpenClass_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[2]/div/div"
-    drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[3]"
+    drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[2]"
 
     drpOpenSubject_xpath = "/html/body/div[2]/div/div/div[2]/form/div[3]/div[1]/div/div"
     drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[4]"
@@ -45,90 +50,103 @@ class course:
     txtSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/input"
     btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/button"
 
+    lsAllCoursesOption_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[3]/div/div/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/li"
+    lsDeleteCourse_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div[1]/div[2]/div/div/div[1]/div[3]/div/div/li/ul/li[2]"
+    btnConfirmDeleteCourse_xpath = "/html/body/div[2]/div/div[3]/button[1]"
+
     def __init__(self, driver):
         self.driver = driver
 
     def clickOnMoreItems(self):
-        self.driver.find_element_by_xpath(self.lnkMoreItems_xpath).click()
+        self.driver.find_element(By.XPATH, self.lnkMoreItems_xpath).click()
 
     def clickOnCourseMenu(self):
-        self.driver.find_element_by_link_text(self.lnkCourse_name).click()
+        self.driver.find_element(By.LINK_TEXT, self.lnkCourse_name).click()
 
     def clickOnAdd(self):
-        self.driver.find_element_by_xpath(self.btnAdd_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnAdd_xpath).click()
 
     def setTitle(self, textbook):
-        self.driver.find_element_by_xpath(self.txtTitle_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtTitle_xpath).send_keys(textbook)
+        self.driver.find_element(By.XPATH, self.txtTitle_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtTitle_xpath).send_keys(textbook)
 
     def selectTechType(self):
-        self.driver.find_element_by_xpath(self.radiobtnType).click()
+        self.driver.find_element(By.XPATH, self.radiobtnType).click()
 
     def drpSyllabus(self):
-        self.driver.find_element_by_xpath(self.drpOpenSyllabus_xpath).click()
-        self.driver.find_element_by_xpath(self.drpSelectSyllsbus_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpOpenSyllabus_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectSyllsbus_xpath).click()
 
     def drpClass(self):
-        self.driver.find_element_by_xpath(self.drpOpenClass_xpath).click()
-        self.driver.find_element_by_xpath(self.drpSelectClass_xpah).click()
+        self.driver.find_element(By.XPATH, self.drpOpenClass_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectClass_xpah).click()
 
     def drpSubject(self):
-        self.driver.find_element_by_xpath(self.drpOpenSubject_xpath).click()
-        self.driver.find_element_by_xpath(self.drpSelectSubject_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpOpenSubject_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectSubject_xpath).click()
 
     def drpMode(self):
-        self.driver.find_element_by_xpath(self.drpOpenMode_xpath).click()
-        self.driver.find_element_by_xpath(self.drpSelectMode_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpOpenMode_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectMode_xpath).click()
 
     def setCost(self, course):
-        self.driver.find_element_by_xpath(self.txtCost_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtCost_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.txtCost_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtCost_xpath).send_keys(course)
 
     def setStartDate(self, course):
-        self.driver.find_element_by_xpath(self.txtStartDate_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtStartDate_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.txtStartDate_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtStartDate_xpath).send_keys(course)
 
     def setEndDate(self, course):
-        self.driver.find_element_by_xpath(self.txtEndDate_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtEndDate_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.txtEndDate_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtEndDate_xpath).send_keys(course)
 
     def setSmapleImage(self, course):
-        self.driver.find_element_by_xpath(self.uploadSampleImage_xpath).clear()
-        self.driver.find_element_by_xpath(self.uploadSampleImage_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.uploadSampleImage_xpath).clear()
+        self.driver.find_element(By.XPATH, self.uploadSampleImage_xpath).send_keys(course)
 
     def setDemoVideo(self, course):
-        self.driver.find_element_by_xpath(self.uploadDemoVideo_xpath).clear()
-        self.driver.find_element_by_xpath(self.uploadDemoVideo_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.uploadDemoVideo_xpath).clear()
+        self.driver.find_element(By.XPATH, self.uploadDemoVideo_xpath).send_keys(course)
 
     def setLogo(self, course):
-        self.driver.find_element_by_xpath(self.uploadLogo_xpath).clear()
-        self.driver.find_element_by_xpath(self.uploadLogo_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.uploadLogo_xpath).clear()
+        self.driver.find_element(By.XPATH, self.uploadLogo_xpath).send_keys(course)
 
     def setNumberOfVideos(self, course):
-        self.driver.find_element_by_xpath(self.txtNumberOfVideos_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtNumberOfVideos_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.txtNumberOfVideos_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtNumberOfVideos_xpath).send_keys(course)
 
     def setNumberOfAssignements(self, course):
-        self.driver.find_element_by_xpath(self.txtNumberOfAssignements).clear()
-        self.driver.find_element_by_xpath(self.txtNumberOfAssignements).send_keys(course)
+        self.driver.find_element(By.XPATH, self.txtNumberOfAssignements).clear()
+        self.driver.find_element(By.XPATH, self.txtNumberOfAssignements).send_keys(course)
 
     def setCourseTopics(self, course):
-        self.driver.find_element_by_xpath(self.txtCourseTopics_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtCourseTopics_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.txtCourseTopics_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtCourseTopics_xpath).send_keys(course)
 
     def selectCourseType(self):
-        self.driver.find_element_by_xpath(self.radiobtnCourseType).click()
+        self.driver.find_element(By.XPATH, self.radiobtnCourseType).click()
 
     def setDescription(self, course):
-        self.driver.find_element_by_xpath(self.txtAreaDescription_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtAreaDescription_xpath).send_keys(course)
+        self.driver.find_element(By.XPATH, self.txtAreaDescription_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtAreaDescription_xpath).send_keys(course)
 
     def clickOnSubmit(self):
-        self.driver.find_element_by_xpath(self.btnSubmit_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnSubmit_xpath).click()
 
     def setSearchCourse(self, tuition):
-        self.driver.find_element_by_xpath(self.txtSearch_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtSearch_xpath).send_keys(tuition)
+        self.driver.find_element(By.XPATH, self.txtSearch_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtSearch_xpath).send_keys(tuition)
 
     def clickOnSearch(self):
-        self.driver.find_element_by_xpath(self.btnSearch_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnSearch_xpath).click()
+
+    def clickOnAllCoursesOption(self):
+        self.driver.find_element(By.XPATH, self.lsAllCoursesOption_xpath).click()
+
+    def clickOnDeleteCourse(self):
+        self.driver.find_element(By.XPATH, self.lsDeleteCourse_xpath).click()
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.btnConfirmDeleteCourse_xpath).click()
+
