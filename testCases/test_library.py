@@ -2,6 +2,9 @@ import unittest
 
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.LibraryPage import Library
 from utilities.readProperties import ReadConfig
@@ -15,7 +18,7 @@ class Test_019_library:
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
-    @unittest.skip
+
     @pytest.mark.sanity
     def test_library(self, setup):
         self.logger.info("************* Test_014_library **********")
@@ -66,7 +69,7 @@ class Test_019_library:
 
         self.logger.info("********* Add library validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
         exp_alert = "library created successfully."
         # act_alert = self.driver.find_element_by_xpath("//div[2]")
@@ -115,7 +118,7 @@ class Test_019_library:
 
         self.logger.info("********* Search library validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "English" in self.msg:
@@ -134,7 +137,7 @@ class Test_019_library:
         self.logger.info("******* Ending test **********")
 
     @pytest.mark.sanity
-    def test_search_library_syllabus(self, setup):
+    def test_search_library_with_syllabus(self, setup):
         self.logger.info("************* Test_014_library **********")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -157,23 +160,22 @@ class Test_019_library:
 
         self.logger.info("************* Search library**********")
 
-        self.library.drpSyllabus("CBSE")
+        self.library.drpSearchSyllabus("CBSE")
 
-        self.library.clickTextBookSearchGo()
+        self.library.clickOnGo()
         time.sleep(3)
-
         self.logger.info("************* Searching Post **********")
 
         self.logger.info("********* Search library validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "English" in self.msg:
+        if "CBSE" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
-        elif "library data not available..." in self.msg:
+        elif "Library data not available..." in self.msg:
             assert True
             self.logger.info("********* Test Passed *********")
         else:
@@ -184,7 +186,113 @@ class Test_019_library:
         self.driver.close()
         self.logger.info("******* Ending test **********")
 
-    @unittest.skip
+    @pytest.mark.sanity
+    def test_search_library_with_syllabus_and_class(self, setup):
+        self.logger.info("************* Test_014_library **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
+
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+
+        self.logger.info("************* Login successful **********")
+
+        self.logger.info("******* Starting Add library Test **********")
+        self.library = Library(self.driver)
+        time.sleep(3)
+        self.library.clickOnMoreItems()
+        time.sleep(2)
+        self.library.clickOnLibraryMenu()  # Click on Menu Item
+        time.sleep(5)
+
+        self.logger.info("************* Search library**********")
+
+        self.library.drpSearchSyllabus("CBSE")
+        time.sleep(3)
+        self.library.drpSearchClass("10th")
+        time.sleep(3)
+        self.library.clickOnGo()
+        time.sleep(3)
+        self.logger.info("************* Searching Post **********")
+
+        self.logger.info("********* Search library validation started *****************")
+
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
+        print(self.msg)
+
+        if "10th" in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Test Passed *********")
+        elif "Library data not available..." in self.msg:
+            assert True
+            self.logger.info("********* Test Passed *********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addlibrary_scr.png")  # Screenshot
+            self.logger.error("********* Search library Test Failed ************")
+            assert False
+
+        self.driver.close()
+        self.logger.info("******* Ending test **********")
+
+    @pytest.mark.sanity
+    def test_search_library_with_syllabus_class_and_subject(self, setup):
+        self.logger.info("************* Test_014_library **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
+
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+
+        self.logger.info("************* Login successful **********")
+
+        self.logger.info("******* Starting Add library Test **********")
+        self.library = Library(self.driver)
+        time.sleep(3)
+        self.library.clickOnMoreItems()
+        time.sleep(2)
+        self.library.clickOnLibraryMenu()  # Click on Menu Item
+        time.sleep(5)
+
+        self.logger.info("************* Search library**********")
+
+        self.library.drpSearchSyllabus("CBSE")
+        time.sleep(3)
+        self.library.drpSearchClass("10th")
+        time.sleep(3)
+        self.library.drpSearchSubject("Science")
+        time.sleep(3)
+        self.library.clickOnGo()
+        time.sleep(3)
+        self.logger.info("************* Searching Post **********")
+
+        self.logger.info("********* Search library validation started *****************")
+
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
+        print(self.msg)
+
+        if "Science" in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Test Passed *********")
+        elif "Library data not available..." in self.msg:
+            assert True
+            self.logger.info("********* Test Passed *********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addlibrary_scr.png")  # Screenshot
+            self.logger.error("********* Search library Test Failed ************")
+            assert False
+
+        self.driver.close()
+        self.logger.info("******* Ending test **********")
+
+    @pytest.mark.sanity
     def test_Deletelibrary(self, setup):
         self.logger.info("************* Test_018_library **********")
         self.driver = setup
@@ -202,23 +310,23 @@ class Test_019_library:
         time.sleep(5)
         self.library.clickOnMoreItems()
         time.sleep(2)
-        self.library.clickOnlibraryMenu()  # Click on Menu Item
+        self.library.clickOnLibraryMenu()  # Click on Menu Item
         time.sleep(5)
 
         self.logger.info("*************Delete library**********")
 
-        self.library.clickOnAlllibrarysOption()
+        self.library.clickOnLibraryOption()
         time.sleep(3)
-        self.library.clickOnDeletelibrary()
+        self.library.clickOnLibraryDelete()
         time.sleep(3)
         self.logger.info("*************Delete library **********")
 
         self.logger.info("*********Delete library validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "library deleted from database." in self.msg:
+        if "Library deleted from database." in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")

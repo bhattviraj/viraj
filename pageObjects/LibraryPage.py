@@ -2,6 +2,7 @@ import time
 from telnetlib import EC
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 
 class Library:
@@ -29,17 +30,16 @@ class Library:
     txtSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/input"
     btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/button"
 
-    btnClickonOption_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div[2]/div[1]/div/div[1]/div/li/a/img"
-    btnClickonDelete_xpath = "//a[contains(text(),'Delete')]"
-    btnClickOnConfirnDelete_xpath = "/html/body/div[2]/div/div[3]/button[1]"
+    # Library Tab
+    btnClickonLibraryOption_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[3]/div/div/div[1]/div/div/div[2]/div[2]/div[2]/li"
+    btnClickonLibraryDelete_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[3]/div/div/div[1]/div/div/div[2]/div[2]/div[2]/li/ul/li[2]"
+    btnClickOnLibraryConfirnDelete_xpath = "/html/body/div[2]/div/div[3]/button[1]"
 
     # filter
-    drpOpenSyllabusSearch = ""
-    drpSelectSyllabusSearch = ""
-    drpOpenClassSearch = ""
-    drpSelectClassSearch = ""
-    drpOpenSubjectSearch = ""
-    drpSelectSubjectSearch = ""
+    sltSyllabus = "syllabus_id"
+    sltClass = "class_id"
+    sltSubject = "subject_id"
+    btnGo_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[3]/div[4]/button"
 
 
     def __init__(self, driver):
@@ -93,9 +93,26 @@ class Library:
     def clickOnSearch(self):
         self.driver.find_element(By.XPATH, self.btnSearch_xpath).click()
 
-    def clickOnOption(self):
-        self.driver.find_element(By.XPATH, self.btnClickonOption_xpath).click()
+    def clickOnLibraryOption(self):
+        self.driver.find_element(By.XPATH, self.btnClickonLibraryOption_xpath).click()
 
-    def clickOnDelete(self):
-        self.driver.find_element(By.XPATH, self.btnClickonDelete_xpath).click()
-        self.driver.find_element(By.XPATH, self.btnClickOnConfirnDelete_xpath).click()
+    def clickOnLibraryDelete(self):
+        self.driver.find_element(By.XPATH, self.btnClickonLibraryDelete_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnClickOnLibraryConfirnDelete_xpath).click()
+
+
+    # Filter
+    def drpSearchSyllabus(self,search):
+        select = Select(self.driver.find_element(By.NAME, self.sltSyllabus))
+        select.select_by_visible_text(search)
+
+    def drpSearchClass(self,search):
+        select = Select(self.driver.find_element(By.NAME, self.sltClass))
+        select.select_by_visible_text(search)
+
+    def drpSearchSubject(self,search):
+        select = Select(self.driver.find_element(By.NAME, self.sltSubject))
+        select.select_by_visible_text(search)
+
+    def clickOnGo(self):
+        self.driver.find_element(By.XPATH, self.btnGo_xpath).click()
