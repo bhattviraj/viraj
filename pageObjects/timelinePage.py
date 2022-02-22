@@ -1,5 +1,7 @@
 import time
 
+from selenium.webdriver.common.by import By
+
 
 class Timeline:
     # Add Timeline
@@ -30,52 +32,52 @@ class Timeline:
         self.driver = driver
 
     def clickOnTimelineMenu(self):
-        self.driver.find_element_by_link_text(self.lnkTimeline_name).click()
+        self.driver.find_element(By.LINK_TEXT, self.lnkTimeline_name).click()
 
     def clickOnAdd(self):
-        self.driver.find_element_by_xpath(self.btnAdd_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnAdd_xpath).click()
 
     def drpTargetAudience(self):
-        self.driver.find_element_by_xpath(self.drpOpenTargetAudience_xpath).click()
-        self.driver.find_element_by_xpath(self.drpSelectTragerAudience_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpOpenTargetAudience_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectTragerAudience_xpath).click()
 
     def setDescription(self, timeline):
-        self.driver.find_element_by_xpath(self.txtAreaDescription_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtAreaDescription_xpath).send_keys(timeline)
+        self.driver.find_element(By.XPATH, self.txtAreaDescription_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtAreaDescription_xpath).send_keys(timeline)
 
     def setTimelineImage(self, timeline):
-        self.driver.find_element_by_xpath(self.fileTimelineImage_xpath).clear()
-        self.driver.find_element_by_xpath(self.fileTimelineImage_xpath).send_keys(timeline)
+        self.driver.find_element(By.XPATH, self.fileTimelineImage_xpath).clear()
+        self.driver.find_element(By.XPATH, self.fileTimelineImage_xpath).send_keys(timeline)
 
     def setTimelineVideo(self, timeline):
-        self.driver.find_element_by_xpath(self.fileTimelineVideo_xpath).clear()
-        self.driver.find_element_by_xpath(self.fileTimelineVideo_xpath).send_keys(timeline)
+        self.driver.find_element(By.XPATH, self.fileTimelineVideo_xpath).clear()
+        self.driver.find_element(By.XPATH, self.fileTimelineVideo_xpath).send_keys(timeline)
 
     def clickOnSubmit(self):
-        self.driver.find_element_by_xpath(self.btnSubmit_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnSubmit_xpath).click()
 
     def setSearchTimeline(self, timeline):
-        self.driver.find_element_by_xpath(self.txtSearch_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtSearch_xpath).send_keys(timeline)
+        self.driver.find_element(By.XPATH, self.txtSearch_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtSearch_xpath).send_keys(timeline)
 
     def clickOnSearch(self):
-        self.driver.find_element_by_xpath(self.btnSearch_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnSearch_xpath).click()
 
     def clickOnoption(self):
-        self.driver.find_element_by_xpath(self.lsOption_xpath).click()
+        self.driver.find_element(By.XPATH, self.lsOption_xpath).click()
 
     def clickOnTimelineRepost(self):
-        self.driver.find_element_by_xpath(self.lsTimelineRepost_xpath).click()
-        self.driver.find_element_by_xpath(self.btnConfirmRepost_xpath).click()
+        self.driver.find_element(By.XPATH, self.lsTimelineRepost_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnConfirmRepost_xpath).click()
 
     def clickOnMyTimeline(self):
-        self.driver.find_element_by_xpath(self.btnMyTimeline_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnMyTimeline_xpath).click()
 
     def clickOnMytimelineOption(self):
-        self.driver.find_element_by_xpath(self.lsMytimelineOption_xpath).click()
+        self.driver.find_element(By.XPATH, self.lsMytimelineOption_xpath).click()
 
     def clickOnDeleteMytimeline(self):
-        self.driver.find_element_by_xpath(self.lsDeleteMyTimeline_xpath).click()
+        self.driver.find_element(By.XPATH, self.lsDeleteMyTimeline_xpath).click()
         time.sleep(2)
-        self.driver.find_element_by_xpath(self.btnConfirmDeleteMyTimeline_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnConfirmDeleteMyTimeline_xpath).click()
 

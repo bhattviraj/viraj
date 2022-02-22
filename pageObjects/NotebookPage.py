@@ -64,7 +64,7 @@ class notebook:
 
     def setSearchNotebook(self, notebook):
         self.driver.find_element(By.XPATH, self.txtSearch_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtSearch_xpath).send_keys(notebook)
+        self.driver.find_element(By.XPATH, self.txtSearch_xpath).send_keys(notebook)
 
     def clickOnSearch(self):
         self.driver.find_element(By.XPATH, self.btnSearch_xpath).click()

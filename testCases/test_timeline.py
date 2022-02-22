@@ -2,6 +2,9 @@ import unittest
 
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.timelinePage import Timeline
 from utilities.readProperties import ReadConfig
@@ -54,7 +57,7 @@ class Test_0018_Timeline:
 
         self.logger.info("********* Add customer validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
         if 'Timeline posted successfully.' in self.msg:
             assert True
@@ -98,7 +101,7 @@ class Test_0018_Timeline:
 
         self.logger.info("********* Search Timeline validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Viraj" in self.msg:
@@ -141,7 +144,7 @@ class Test_0018_Timeline:
 
         self.logger.info("********* Repost Timeline validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Timeline posted successfully." in self.msg:
@@ -186,7 +189,7 @@ class Test_0018_Timeline:
 
         self.logger.info("*********Delete My validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Timeline deleted from successfully." in self.msg:

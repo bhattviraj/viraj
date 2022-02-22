@@ -1,5 +1,8 @@
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.SearchDataPage import Search
 from utilities.readProperties import ReadConfig
@@ -41,7 +44,7 @@ class Test_007_searchCourse:
 
         self.logger.info("********* Search Coursetor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "My Course" in self.msg:
@@ -86,7 +89,7 @@ class Test_007_searchCourse:
 
             self.logger.info("********* Search Coursetor validation started *****************")
 
-            self.msg = self.driver.find_element_by_tag_name("body").text
+            self.msg = self.driver.find_element(By.TAG_NAME, "body").text
             print(self.msg)
 
             if "CBSE" in self.msg:
@@ -138,7 +141,7 @@ class Test_007_searchCourse:
 
             self.logger.info("********* Search Coursetor validation started *****************")
 
-            self.msg = self.driver.find_element_by_tag_name("body").text
+            self.msg = self.driver.find_element(By.TAG_NAME, "body").text
             print(self.msg)
 
             if "10th" in self.msg:
@@ -191,7 +194,7 @@ class Test_007_searchCourse:
 
             self.logger.info("********* Search Coursetor validation started *****************")
 
-            self.msg = self.driver.find_element_by_tag_name("body").text
+            self.msg = self.driver.find_element(By.TAG_NAME, "body").text
             print(self.msg)
 
             if "Network" in self.msg:

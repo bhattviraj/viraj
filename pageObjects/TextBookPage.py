@@ -1,6 +1,9 @@
 import time
 from telnetlib import EC
 
+from selenium.webdriver.common.by import By
+
+
 class TextBook:
     # TexBook
     lnkText_book_name = "Textbook"
@@ -34,53 +37,53 @@ class TextBook:
         self.driver = driver
 
     def clickOnTextBookMenu(self):
-        self.driver.find_element_by_link_text(self.lnkText_book_name).click()
+        self.driver.find_element(By.LINK_TEXT, self.lnkText_book_name).click()
 
     def clickOnAdd(self):
-        self.driver.find_element_by_xpath(self.btnAdd_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnAdd_xpath).click()
 
     def drpSyllabus(self):
-        self.driver.find_element_by_xpath(self.drpOpenSyllabus_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpOpenSyllabus_xpath).click()
         #self.driver.execute_script("arguments[0].click();", WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[@id='menu-syllabus_id']/div[3]/ul/li[10]"))))
-        self.driver.find_element_by_xpath(self.drpSelectSyllsbus_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectSyllsbus_xpath).click()
 
     def drpClass(self):
-        self.driver.find_element_by_xpath(self.drpOpenClass_xpath).click()
-        self.driver.find_element_by_xpath(self.drpSelectClass_xpah).click()
+        self.driver.find_element(By.XPATH, self.drpOpenClass_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectClass_xpah).click()
 
     def drpSubject(self):
-        self.driver.find_element_by_xpath(self.drpOpenSubject_xpath).click()
-        self.driver.find_element_by_xpath(self.drpSelectSubject_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpOpenSubject_xpath).click()
+        self.driver.find_element(By.XPATH, self.drpSelectSubject_xpath).click()
 
     def setBookName(self, textbook):
-        self.driver.find_element_by_xpath(self.txtBookName_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtBookName_xpath).send_keys(textbook)
+        self.driver.find_element(By.XPATH, self.txtBookName_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtBookName_xpath).send_keys(textbook)
 
     def setBookImage(self, textbook):
-        self.driver.find_element_by_xpath(self.uploadBookImage_xpath).clear()
-        self.driver.find_element_by_xpath(self.uploadBookImage_xpath).send_keys(textbook)
+        self.driver.find_element(By.XPATH, self.uploadBookImage_xpath).clear()
+        self.driver.find_element(By.XPATH, self.uploadBookImage_xpath).send_keys(textbook)
 
     def setExternalLink(self, textbook):
-        self.driver.find_element_by_xpath(self.txtExternalLink_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtExternalLink_xpath).send_keys(textbook)
+        self.driver.find_element(By.XPATH, self.txtExternalLink_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtExternalLink_xpath).send_keys(textbook)
 
     def setDescription(self, textbook):
-        self.driver.find_element_by_xpath(self.txtAreaDescription_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtAreaDescription_xpath).send_keys(textbook)
+        self.driver.find_element(By.XPATH, self.txtAreaDescription_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtAreaDescription_xpath).send_keys(textbook)
 
     def clickOnSubmit(self):
-        self.driver.find_element_by_xpath(self.btnSubmit_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnSubmit_xpath).click()
 
     def setSearchTextBook(self, textbook):
-        self.driver.find_element_by_xpath(self.txtSearch_xpath).clear()
-        self.driver.find_element_by_xpath(self.txtSearch_xpath).send_keys(textbook)
+        self.driver.find_element(By.XPATH, self.txtSearch_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtSearch_xpath).send_keys(textbook)
 
     def clickOnSearch(self):
-        self.driver.find_element_by_xpath(self.btnSearch_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnSearch_xpath).click()
 
     def clickOnOption(self):
-        self.driver.find_element_by_xpath(self.btnClickonOption_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnClickonOption_xpath).click()
 
     def clickOnDelete(self):
-        self.driver.find_element_by_xpath(self.btnClickonDelete_xpath).click()
-        self.driver.find_element_by_xpath(self.btnClickOnConfirnDelete_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnClickonDelete_xpath).click()
+        self.driver.find_element(By.XPATH, self.btnClickOnConfirnDelete_xpath).click()

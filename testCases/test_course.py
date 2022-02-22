@@ -2,6 +2,9 @@ import unittest
 
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.CoursePage import course
 from utilities.readProperties import ReadConfig
@@ -16,7 +19,7 @@ class Test_014_course:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_course(self, setup):
         self.logger.info("************* Test_014_course **********")
         self.driver = setup
@@ -79,7 +82,7 @@ class Test_014_course:
 
         self.logger.info("********* Add course validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
         exp_alert = "Course created successfully."
         # act_alert = self.driver.find_element_by_xpath("//div[2]")
@@ -95,7 +98,7 @@ class Test_014_course:
         self.driver.close()
         self.logger.info("******* Ending Add course test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_searchcourse(self, setup):
         self.logger.info("************* Test_010_search course **********")
         self.driver = setup
@@ -127,7 +130,7 @@ class Test_014_course:
 
         self.logger.info("********* Search course validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Demo" in self.msg:
@@ -175,7 +178,7 @@ class Test_014_course:
 
         self.logger.info("*********Delete course validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Course deleted from database." in self.msg:

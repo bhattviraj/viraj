@@ -1,0 +1,6 @@
+[32mINFO    [0m root:test_01signup_static.py:23 ************* Test_003_Signup **********
+[32mINFO    [0m root:test_01signup_static.py:28 ******* Starting Signup **********
+[32mINFO    [0m root:test_01signup_static.py:32 ************* Providing customer info **********
+[32mINFO    [0m root:test_01signup_static.py:49 ************* Saving customer info **********
+[32mINFO    [0m root:test_01signup_static.py:51 ********* Add customer validation started *****************
+[31m[1mERROR   [0m root:test_01signup_static.py:70 ********* Signup Test Failed ************

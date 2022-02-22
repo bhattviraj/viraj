@@ -51,7 +51,7 @@ class course:
     btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[2]/div[2]/button"
 
     lsAllCoursesOption_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[3]/div/div/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/li"
-    lsDeleteCourse_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div[1]/div[2]/div/div/div[1]/div[3]/div/div/li/ul/li[2]"
+    lsDeleteCourse_xpath = "/html/body/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/div/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/li/ul/li[1]/a[2]"
     btnConfirmDeleteCourse_xpath = "/html/body/div[2]/div/div[3]/button[1]"
 
     def __init__(self, driver):

@@ -1,5 +1,8 @@
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.TuitionPage import Tuitions
 from utilities.readProperties import ReadConfig
@@ -65,16 +68,16 @@ class Test_010_tuitions:
         self.tuitions.CheckSchedule()
         time.sleep(6)
         self.tuitions.clickOnSubmit()
-        self.driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/button").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[1]/button").click()
         time.sleep(5)
 
         self.logger.info("************* Saving Tuition info **********")
 
         self.logger.info("********* Add Tuition validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
-        if 'Job Posted Successfully.' in self.msg:
+        if 'Tuition created successfully.' in self.msg:
             assert True
             time.sleep(3)
             self.logger.info("********* Add  Tuitions Test Passed *********")
@@ -102,7 +105,7 @@ class Test_010_tuitions:
         self.tuitions = Tuitions(self.driver)
         time.sleep(5)
         self.tuitions.clickOnTuitionsMenu() # Click on Menu Item
-        time.sleep(5)
+        time.sleep(7)
 
         self.logger.info("************* Search tuition**********")
 
@@ -115,7 +118,7 @@ class Test_010_tuitions:
 
         self.logger.info("********* Search tuition validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Literature:" in self.msg:

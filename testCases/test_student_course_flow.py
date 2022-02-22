@@ -18,9 +18,9 @@ class Test_student_flow:
     studentUsername = ReadConfig.getStudentUseremail()
     studentPassword = ReadConfig.getStudentPassword()
     logger = LogGen.loggen()  # Logger
-    course_name = "Demo course for testing purpose" # Main Value Course Name
+    course_name = "10th Maths"  # Main Value - Course Name
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_student_course_flow(self, setup):
         self.logger.info("************* Test_014_course **********")
         self.driver = setup
@@ -34,7 +34,7 @@ class Test_student_flow:
 
         self.logger.info("************* Login successful **********")
 
-        self.logger.info("******* Starting Add course Test **********")
+        self.logger.info("******* Starting Search course Test **********")
         self.course = student_side_flow(self.driver)
         time.sleep(3)
         self.course.clickOnSearchCourseMenu()
@@ -43,17 +43,18 @@ class Test_student_flow:
         time.sleep(4)
         self.course.clickOnSearchCourse()
         time.sleep(4)
-        self.logger.info("********* course validation started *****************")
+        self.logger.info("************** Search course validation started *****************")
 
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
 
         if self.course_name in self.msg:
 
-            self.course.clickOnJoinNowCourse()
+            self.course.clickOnJoinNowCourse()  # Purchase the Searched Course
             time.sleep(5)
             self.successMsg = self.driver.find_element(By.TAG_NAME, "body").text
 
             if '' in self.successMsg:
+                self.logger.info("************** If Join Course success Enter Here *****************")
                 self.course.clickOnMoreItems()
                 time.sleep(3)
                 self.course.clickOnCoursesMenu()
@@ -66,15 +67,19 @@ class Test_student_flow:
                 time.sleep(3)
                 self.course.clickOnSearchMyCourse()
                 if self.course_name in self.msg:
-                    assert True
+                    self.logger.log("********* Test Passed Log*********")
                     self.logger.info("********* Test Passed *********")
+                    assert True
                 elif 'Course subscription data not available...' in self.msg:
                     assert False
                 else:
+                    self.logger.error("****** Test Failed *********")
                     assert False
             else:
                 self.logger.error("****** Test Failed *********")
+                assert False
         elif 'Course data not available...' in self.msg:
+            self.logger.log("********* Test Passed Log*********")
             self.logger.info("********** Test is Pass Because Searched Course Data Not Available ************")
             assert True
         else:
@@ -83,4 +88,4 @@ class Test_student_flow:
             assert False
 
         self.driver.close()
-        self.logger.info("******* Ending Add course test **********")
+        self.logger.info("******* Ending Flow course test **********")

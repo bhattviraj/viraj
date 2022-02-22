@@ -15,7 +15,7 @@ class Test_0008_postJob:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_postJob(self, setup):
         self.logger.info("************* Test_008_PostJob **********")
         self.driver = setup
@@ -80,7 +80,7 @@ class Test_0008_postJob:
         self.driver.close()
         self.logger.info("******* Ending Add Post Job test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_searchJob(self,setup):
         self.logger.info("************* Test_008_search Job **********")
         self.driver=setup

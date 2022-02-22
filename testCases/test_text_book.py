@@ -2,6 +2,9 @@ import unittest
 
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.TextBookPage import TextBook
 from pageObjects.SearchDataPage import Search
@@ -31,9 +34,9 @@ class Test_0009_TextBook:
         self.logger.info("************* Login successful **********")
 
         self.logger.info("******* Starting Add Text Book Test **********")
-        self.textbook =TextBook(self.driver)
+        self.textbook = TextBook(self.driver)
         time.sleep(3)
-        self.textbook.clickOnTextBookMenu() #Click on Menu Item
+        self.textbook.clickOnTextBookMenu()  # Click on Menu Item
         time.sleep(4)
         self.textbook.clickOnAdd()  # Click On Add Button
         time.sleep(4)
@@ -63,7 +66,7 @@ class Test_0009_TextBook:
 
         self.logger.info("********* Add Textbook validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
         if 'Textbook added successfully in the database.' in self.msg:
             assert True
@@ -79,203 +82,205 @@ class Test_0009_TextBook:
 
     def test_search_textbook_with_syllabus(self, setup):
 
-            self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
-            self.driver = setup
-            self.driver.get(self.baseURL)
-            self.driver.maximize_window()
+        self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
 
-            self.lp = LoginPage(self.driver)
-            self.lp.setUserName(self.username)
-            self.lp.setPassword(self.password)
-            self.lp.clickLogin()
-            self.logger.info("************* Login successful **********")
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
 
-            self.logger.info("******* Starting Search Text Book Test **********")
-            self.searchtextbook = Search(self.driver)
-            time.sleep(5)
-            self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
-            time.sleep(4)
+        self.logger.info("******* Starting Search Text Book Test **********")
+        self.searchtextbook = Search(self.driver)
+        time.sleep(5)
+        self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
+        time.sleep(4)
 
-            self.logger.info("************* Search Text Book **********")
+        self.logger.info("************* Search Text Book **********")
 
-            self.searchtextbook.drpSyllabus("CBSE")
+        self.searchtextbook.drpSyllabus("CBSE")
+        time.sleep(3)
+        self.searchtextbook.clickTextBookSearchGo()
+        time.sleep(3)
 
-            self.searchtextbook.clickTextBookSearchGo()
-            time.sleep(3)
+        self.logger.info("************* Searching Text Book **********")
 
-            self.logger.info("************* Searching Text Book **********")
+        self.logger.info("********* Search Text Book validation started *****************")
 
-            self.logger.info("********* Search Text Book validation started *****************")
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
 
-            self.msg = self.driver.find_element_by_tag_name("body").text
+        if "CBSE" in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Search Text Book Test Passed *********")
+        elif "Search data not available..." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info(
+                "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            self.logger.error("********* Search Text Book Test Failed ************")
+            assert False
 
-            if "CBSE" in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info("********* Search Text Book Test Passed *********")
-            elif "Search data not available..." in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info("********* Search Text Book Test Passed because return Search Text Book data not available...*********")
-            else:
-                self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
-                self.logger.error("********* Search Text Book Test Failed ************")
-                assert False
-
-            self.driver.close()
-            self.logger.info("******* Ending Search Text Book test **********")
+        self.driver.close()
+        self.logger.info("******* Ending Search Text Book test **********")
 
     def test_search_textbook_with_syllabus_and_class(self, setup):
 
-            self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
-            self.driver = setup
-            self.driver.get(self.baseURL)
-            self.driver.maximize_window()
+        self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
 
-            self.lp = LoginPage(self.driver)
-            self.lp.setUserName(self.username)
-            self.lp.setPassword(self.password)
-            self.lp.clickLogin()
-            self.logger.info("************* Login successful **********")
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
 
-            self.logger.info("******* Starting Search Text Book Test **********")
-            self.searchtextbook = Search(self.driver)
-            time.sleep(5)
-            self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
-            time.sleep(4)
+        self.logger.info("******* Starting Search Text Book Test **********")
+        self.searchtextbook = Search(self.driver)
+        time.sleep(5)
+        self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
+        time.sleep(4)
 
-            self.logger.info("************* Search Text Book **********")
+        self.logger.info("************* Search Text Book **********")
 
-            searched_value = self.searchtextbook.drpSyllabus("CBSE")
-            time.sleep(3)
-            self.searchtextbook.drpClass("10th")
-            self.searchtextbook.clickTextBookSearchGo()
-            time.sleep(3)
+        searched_value = self.searchtextbook.drpSyllabus("CBSE")
+        time.sleep(3)
+        self.searchtextbook.drpClass("10th")
+        self.searchtextbook.clickTextBookSearchGo()
+        time.sleep(3)
 
-            self.logger.info("************* Searching Text Book **********")
+        self.logger.info("************* Searching Text Book **********")
 
-            self.logger.info("********* Search Text Book validation started *****************")
+        self.logger.info("********* Search Text Book validation started *****************")
 
-            self.msg = self.driver.find_element_by_tag_name("body").text
-            print(self.msg)
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
+        print(self.msg)
 
-            if "10th" in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info("********* Search Text Book Test Passed *********")
-            elif "Search data not available..." in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info("********* Search Text Book Test Passed because return Search Text Book data not available...*********")
-            else:
-                self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
-                self.logger.error("********* Search Text Book Test Failed ************")
-                assert False
+        if "10th" in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Search Text Book Test Passed *********")
+        elif "Search data not available..." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info(
+                "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            self.logger.error("********* Search Text Book Test Failed ************")
+            assert False
 
-            self.driver.close()
-            self.logger.info("******* Ending Search Text Book test **********")
+        self.driver.close()
+        self.logger.info("******* Ending Search Text Book test **********")
 
     def test_search_textbook_with_syllabus_class_and_subject(self, setup):
 
-            self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
-            self.driver = setup
-            self.driver.get(self.baseURL)
-            self.driver.maximize_window()
+        self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
 
-            self.lp = LoginPage(self.driver)
-            self.lp.setUserName(self.username)
-            self.lp.setPassword(self.password)
-            self.lp.clickLogin()
-            self.logger.info("************* Login successful **********")
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
 
-            self.logger.info("******* Starting Search Text Book Test **********")
-            self.searchtextbook = Search(self.driver)
-            time.sleep(5)
-            self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
-            time.sleep(4)
+        self.logger.info("******* Starting Search Text Book Test **********")
+        self.searchtextbook = Search(self.driver)
+        time.sleep(5)
+        self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
+        time.sleep(4)
 
-            self.logger.info("************* Search Text Book **********")
+        self.logger.info("************* Search Text Book **********")
 
-            searched_value = self.searchtextbook.drpSyllabus("CBSE")
-            time.sleep(3)
-            self.searchtextbook.drpClass("10th")
-            time.sleep(3)
-            self.searchtextbook.drpSubject("Network")
-            self.searchtextbook.clickTextBookSearchGo()
-            time.sleep(3)
+        searched_value = self.searchtextbook.drpSyllabus("CBSE")
+        time.sleep(3)
+        self.searchtextbook.drpClass("10th")
+        time.sleep(3)
+        self.searchtextbook.drpSubject("Network")
+        self.searchtextbook.clickTextBookSearchGo()
+        time.sleep(3)
 
-            self.logger.info("************* Searching Text Book **********")
+        self.logger.info("************* Searching Text Book **********")
 
-            self.logger.info("********* Search Text Book validation started *****************")
+        self.logger.info("********* Search Text Book validation started *****************")
 
-            self.msg = self.driver.find_element_by_tag_name("body").text
-            print(self.msg)
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
+        print(self.msg)
 
-            if "History" in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info("********* Search Text Book Test Passed *********")
-            elif "Text Book data not available..." in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info(
-                    "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
-            else:
-                self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
-                self.logger.error("********* Search Text Book Test Failed ************")
-                assert False
+        if "Network" in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Search Text Book Test Passed *********")
+        elif "Text Book data not available..." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info(
+                "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            self.logger.error("********* Search Text Book Test Failed ************")
+            assert False
 
-            self.driver.close()
-            self.logger.info("******* Ending Search Text Book test **********")
+        self.driver.close()
+        self.logger.info("******* Ending Search Text Book test **********")
 
     def test_search_textbook_with_(self, setup):
 
-            self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
-            self.driver = setup
-            self.driver.get(self.baseURL)
-            self.driver.maximize_window()
+        self.logger.info("************* Test_09_Search Text Book With Syllabus **********")
+        self.driver = setup
+        self.driver.get(self.baseURL)
+        self.driver.maximize_window()
 
-            self.lp = LoginPage(self.driver)
-            self.lp.setUserName(self.username)
-            self.lp.setPassword(self.password)
-            self.lp.clickLogin()
-            self.logger.info("************* Login successful **********")
+        self.lp = LoginPage(self.driver)
+        self.lp.setUserName(self.username)
+        self.lp.setPassword(self.password)
+        self.lp.clickLogin()
+        self.logger.info("************* Login successful **********")
 
-            self.logger.info("******* Starting Search Text Book Test **********")
-            self.searchtextbook = Search(self.driver)
-            time.sleep(5)
-            self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
-            time.sleep(4)
+        self.logger.info("******* Starting Search Text Book Test **********")
+        self.searchtextbook = Search(self.driver)
+        time.sleep(5)
+        self.searchtextbook.clickOnTextBookMenu()  # Click on Menu Item
+        time.sleep(4)
 
-            self.logger.info("************* Search Text Book **********")
+        self.logger.info("************* Search Text Book **********")
 
-            searched_value = self.searchtextbook.setSearchByBookName("Network")
+        searched_value = self.searchtextbook.setSearchByBookName("Network")
 
-            self.searchtextbook.clickTextBookSearchGo()
-            time.sleep(3)
+        self.searchtextbook.clickTextBookSearchGo()
+        time.sleep(3)
 
-            self.logger.info("************* Searching Text Book **********")
+        self.logger.info("************* Searching Text Book **********")
 
-            self.logger.info("********* Search Text Book validation started *****************")
+        self.logger.info("********* Search Text Book validation started *****************")
 
-            self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
 
-            if "CBSE" in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info("********* Search Text Book Test Passed *********")
-            elif "Search data not available..." in self.msg:
-                assert True
-                time.sleep(2)
-                self.logger.info(
-                    "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
-            else:
-                self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
-                self.logger.error("********* Search Text Book Test Failed ************")
-                assert False
+        if "CBSE" in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info("********* Search Text Book Test Passed *********")
+        elif "Search data not available..." in self.msg:
+            assert True
+            time.sleep(2)
+            self.logger.info(
+                "********* Search Text Book Test Passed because return Search Text Book data not available...*********")
+        else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            self.logger.error("********* Search Text Book Test Failed ************")
+            assert False
 
-            self.driver.close()
-            self.logger.info("******* Ending Search Text Book test **********")
+        self.driver.close()
+        self.logger.info("******* Ending Search Text Book test **********")
 
     def test_delete_textbook(self, setup):
 
@@ -302,7 +307,7 @@ class Test_0009_TextBook:
 
         self.logger.info("********* Delete Text Book validation started *****************")
         time.sleep(3)
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "TextBook deleted from database." in self.msg:

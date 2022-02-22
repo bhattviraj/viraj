@@ -13,7 +13,7 @@ class Test_002_DDT_Login():
     path = ".//TestData/LoginData.xlsx"
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_login_ddt(self, setup):
         self.logger.info("******* Starting Test_002_DDT_Login Test **********")
         self.logger.info("******* Starting Login DDT Test **********")

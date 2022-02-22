@@ -1,0 +1,3 @@
+[32mINFO    [0m root:test_03todo.py:73 ************* Test_0011_Delete Todo **********
+[32mINFO    [0m root:test_03todo.py:83 ************* Login Successful **********
+[32mINFO    [0m root:test_03todo.py:85 ******* Starting Delete Todo Test **********

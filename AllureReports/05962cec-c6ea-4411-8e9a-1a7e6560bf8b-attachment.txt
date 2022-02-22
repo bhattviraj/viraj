@@ -1,0 +1,7 @@
+[32mINFO    [0m root:test_course.py:21 ************* Test_014_course **********
+[32mINFO    [0m root:test_course.py:31 ************* Login successful **********
+[32mINFO    [0m root:test_course.py:33 ******* Starting Add course Test **********
+[32mINFO    [0m root:test_course.py:78 ************* Saving course info **********
+[32mINFO    [0m root:test_course.py:80 ********* Add course validation started *****************
+[32mINFO    [0m root:test_course.py:89 ********* Add  course Test Passed *********
+[32mINFO    [0m root:test_course.py:96 ******* Ending Add course test **********

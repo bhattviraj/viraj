@@ -12,14 +12,12 @@ from utilities.customLogger import LogGen
 from utilities import XLUtils
 import time
 
-
 class Test_003_DDT_AddTodo():
     baseURL = ReadConfig.getApplicationURL()
     path = r".//TestData/TodoData.xlsx"
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
-
 
     @pytest.mark.sanity
     def test_addTodo_ddt(self, setup):
@@ -53,7 +51,7 @@ class Test_003_DDT_AddTodo():
             self.todo.clickOnAddTodo()
             time.sleep(3)
 
-            self.msg = self.driver.find_element_by_tag_name("div").text
+            self.msg = self.driver.find_element(By.TAG_NAME, "div").text
             print(self.msg)
             lst_status.append("Todos added successfully in the database.")
         if 'Todos added successfully in the database.' in self.msg:
@@ -93,7 +91,7 @@ class Test_003_DDT_AddTodo():
         self.todo.clickOnDelete()
         time.sleep(3)
 
-        self.msg = self.driver.find_element_by_tag_name("div").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "div").text
         if 'Todos deleted from database.' in self.msg:
             assert True
             self.logger.info("********* Delete Todo Test Passed *********")

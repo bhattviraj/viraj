@@ -2,6 +2,9 @@ import unittest
 
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.NotebookPage import notebook
 from utilities.readProperties import ReadConfig
@@ -13,8 +16,8 @@ class Test_014_notebook:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    @unittest.skip
-    @pytest.mark.sanity
+    #@unittest.skip
+    #@pytest.mark.sanity
     def test_notebook(self, setup):
         self.logger.info("************* Test_014_notebook **********")
         self.driver = setup
@@ -54,10 +57,9 @@ class Test_014_notebook:
 
         self.logger.info("********* Add notebook validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
         exp_alert = "notebook created successfully."
-        # act_alert = self.driver.find_element_by_xpath("//div[2]")
         if 'Notebook added successfully in the database.' in self.msg:
             assert True
             time.sleep(3)
@@ -101,7 +103,7 @@ class Test_014_notebook:
 
         self.logger.info("********* Search notebook validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Viraj" in self.msg:
@@ -144,7 +146,7 @@ class Test_014_notebook:
 
         self.logger.info("*********Delete Notebook validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Notebook deleted successfully from database." in self.msg:

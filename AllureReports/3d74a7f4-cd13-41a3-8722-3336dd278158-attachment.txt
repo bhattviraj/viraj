@@ -1,0 +1,4 @@
+[32mINFO    [0m root:test_find_tutor.py:17 ************* Test_006_FindTutor **********
+[32mINFO    [0m root:test_find_tutor.py:26 ************* Login successful **********
+[32mINFO    [0m root:test_find_tutor.py:28 ******* Starting Find Tutor Test **********
+[32mINFO    [0m root:test_find_tutor.py:34 ************* Search Tutorpark**********

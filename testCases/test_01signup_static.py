@@ -2,6 +2,7 @@ import pytest
 import time
 import allure
 from allure_commons.types import AttachmentType
+from selenium.webdriver.common.by import By
 
 from pageObjects.LoginPage import LoginPage
 from pageObjects.SignupPage import Signup
@@ -10,7 +11,7 @@ from utilities.customLogger import LogGen
 import string
 import random
 
-@pytest.mark.sanity
+#@pytest.mark.sanity
 class Test_003_signup:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
@@ -53,8 +54,7 @@ class Test_003_signup:
         exp_url = "http://tutorpark.ssavts.in/#/register-success"
         act_url = self.driver.current_url
         exp_alert = "The email has already been taken."
-        act_alert = self.driver.find_element_by_xpath("//div[2]")
-        print(self.driver.find_element_by_xpath("//div[2]").text)
+        act_alert = print(self.driver.find_element(By.XPATH, "//div[2]").text)
 
         if exp_url == act_url:
             assert True

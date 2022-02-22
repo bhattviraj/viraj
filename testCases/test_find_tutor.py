@@ -1,5 +1,10 @@
+import unittest
+
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.FindTutorPage import FindTutor
 from utilities.readProperties import ReadConfig
@@ -12,7 +17,7 @@ class Test_006_FindTutor:
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtutor(self,setup):
         self.logger.info("************* Test_006_FindTutor **********")
         self.driver=setup
@@ -42,7 +47,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Viraj" in self.msg:
@@ -57,7 +62,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Add customer test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtuor_with_city(self,setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -88,7 +93,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "viraj" in self.msg:
@@ -107,7 +112,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtuor_with_syllabus(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -138,7 +143,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "CBSE" in self.msg:
@@ -158,7 +163,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtuor_with_syllabus_and_class(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -180,8 +185,8 @@ class Test_006_FindTutor:
 
         self.logger.info("************* Search Tutorpark**********")
 
-        searched_value = self.findtutor.drpSyllabus("CBSE")
-        time.sleep(2)
+        self.findtutor.drpSyllabus("CBSE")
+        time.sleep(3)
         self.findtutor.drpClass("10th")
 
         self.findtutor.clickg()
@@ -191,7 +196,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "10th" in self.msg:
@@ -211,7 +216,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtuor_with_syllabus_class_and_subject(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -245,7 +250,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Network" in self.msg:
@@ -265,7 +270,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtuor_with_mode(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -296,7 +301,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Online" in self.msg:
@@ -316,7 +321,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtuor_with_gender(self, setup):
 
         self.logger.info("************* Test_006_Find tutor with city **********")
@@ -347,7 +352,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Male" in self.msg:
@@ -367,7 +372,7 @@ class Test_006_FindTutor:
         self.driver.close()
         self.logger.info("******* Ending Find Tutor test **********")
 
-    @pytest.mark.sanity
+    #@pytest.mark.sanity
     def test_findtutor_with_Experience(self, setup):
         self.logger.info("************* Test_006_FindTutor **********")
         self.driver = setup
@@ -397,7 +402,7 @@ class Test_006_FindTutor:
 
         self.logger.info("********* Find Tutor validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "1" in self.msg:
