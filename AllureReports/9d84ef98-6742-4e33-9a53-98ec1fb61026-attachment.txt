@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_library.py:142 ************* Test_014_library **********
+[32mINFO    [0m root:test_library.py:152 ************* Login successful **********
+[32mINFO    [0m root:test_library.py:154 ******* Starting Add library Test **********
+[32mINFO    [0m root:test_library.py:162 ************* Search library**********
+[32mINFO    [0m root:test_library.py:168 ************* Searching Post **********
+[32mINFO    [0m root:test_library.py:170 ********* Search library validation started *****************
+[32mINFO    [0m root:test_library.py:178 ********* Test Passed *********
+[32mINFO    [0m root:test_library.py:188 ******* Ending test **********

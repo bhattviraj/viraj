@@ -13,13 +13,14 @@ import string
 import random
 
 
+@pytest.mark.sanity
 class Test_019_library:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    #@pytest.mark.sanity
+    # @pytest.mark.sanity
     def test_library(self, setup):
         self.logger.info("************* Test_014_library **********")
         self.driver = setup
@@ -38,7 +39,7 @@ class Test_019_library:
         time.sleep(3)
         self.library.clickOnMoreItems()
         time.sleep(2)
-        self.library.clickOnLibraryMenu() # Click on Menu Item
+        self.library.clickOnLibraryMenu()  # Click on Menu Item
         time.sleep(5)
         self.library.clickOnAdd()  # Click On Add Button
         time.sleep(4)
@@ -85,7 +86,7 @@ class Test_019_library:
         self.driver.close()
         self.logger.info("******* Ending Add library test **********")
 
-    #@pytest.mark.sanity
+    # @pytest.mark.sanity
     def test_searchlibrary(self, setup):
         self.logger.info("************* Test_014_library **********")
         self.driver = setup
@@ -136,7 +137,7 @@ class Test_019_library:
         self.driver.close()
         self.logger.info("******* Ending test **********")
 
-    #@pytest.mark.sanity
+    # @pytest.mark.sanity
     def test_search_library_with_syllabus(self, setup):
         self.logger.info("************* Test_014_library **********")
         self.driver = setup
@@ -186,7 +187,7 @@ class Test_019_library:
         self.driver.close()
         self.logger.info("******* Ending test **********")
 
-    #@pytest.mark.sanity
+    # @pytest.mark.sanity
     def test_search_library_with_syllabus_and_class(self, setup):
         self.logger.info("************* Test_014_library **********")
         self.driver = setup
@@ -238,7 +239,7 @@ class Test_019_library:
         self.driver.close()
         self.logger.info("******* Ending test **********")
 
-    #@pytest.mark.sanity
+    # @pytest.mark.sanity
     def test_search_library_with_syllabus_class_and_subject(self, setup):
         self.logger.info("************* Test_014_library **********")
         self.driver = setup
@@ -292,7 +293,7 @@ class Test_019_library:
         self.driver.close()
         self.logger.info("******* Ending test **********")
 
-    #@pytest.mark.sanity
+    # @pytest.mark.sanity
     def test_Deletelibrary(self, setup):
         self.logger.info("************* Test_018_library **********")
         self.driver = setup

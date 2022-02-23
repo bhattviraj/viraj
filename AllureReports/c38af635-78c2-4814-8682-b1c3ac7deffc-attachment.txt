@@ -1,0 +1,6 @@
+[32mINFO    [0m root:test_student_course_flow.py:21 ************* Test_014_course **********
+[32mINFO    [0m root:test_student_course_flow.py:31 ************* Login successful **********
+[32mINFO    [0m root:test_student_course_flow.py:33 ******* Starting Search course Test **********
+[32mINFO    [0m root:test_student_course_flow.py:42 ************** Search course validation started *****************
+[32mINFO    [0m root:test_student_course_flow.py:77 ********** Test is Pass Because Searched Course Data Not Available ************
+[32mINFO    [0m root:test_student_course_flow.py:85 ******* Ending Flow course test **********

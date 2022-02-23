@@ -1,5 +1,3 @@
-import unittest
-
 import pytest
 import time
 
@@ -9,10 +7,9 @@ from pageObjects.LoginPage import LoginPage
 from pageObjects.StudentSidePage import student_side_flow
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-import string
-import random
 
 
+@pytest.mark.sanity
 class Test_student_flow:
     baseURL = ReadConfig.getApplicationURL()
     studentUsername = ReadConfig.getStudentUseremail()
@@ -20,7 +17,6 @@ class Test_student_flow:
     logger = LogGen.loggen()  # Logger
     course_name = "10th Maths"  # Main Value - Course Name
 
-    #@pytest.mark.sanity
     def test_student_course_flow(self, setup):
         self.logger.info("************* Test_014_course **********")
         self.driver = setup
@@ -67,7 +63,6 @@ class Test_student_flow:
                 time.sleep(3)
                 self.course.clickOnSearchMyCourse()
                 if self.course_name in self.msg:
-                    self.logger.log("********* Test Passed Log*********")
                     self.logger.info("********* Test Passed *********")
                     assert True
                 elif 'Course subscription data not available...' in self.msg:
@@ -79,7 +74,6 @@ class Test_student_flow:
                 self.logger.error("****** Test Failed *********")
                 assert False
         elif 'Course data not available...' in self.msg:
-            self.logger.log("********* Test Passed Log*********")
             self.logger.info("********** Test is Pass Because Searched Course Data Not Available ************")
             assert True
         else:

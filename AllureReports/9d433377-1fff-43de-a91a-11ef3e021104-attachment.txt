@@ -1,0 +1,7 @@
+[32mINFO    [0m root:test_postjob.py:22 ************* Test_008_PostJob **********
+[32mINFO    [0m root:test_postjob.py:32 ************* Login successful **********
+[32mINFO    [0m root:test_postjob.py:34 ******* Starting Add Post Job Test **********
+[32mINFO    [0m root:test_postjob.py:67 ************* Saving Post Job info **********
+[32mINFO    [0m root:test_postjob.py:69 ********* Add customer validation started *****************
+[32mINFO    [0m root:test_postjob.py:76 ********* Add  Post Job Test Passed *********
+[32mINFO    [0m root:test_postjob.py:83 ******* Ending Add Post Job test **********

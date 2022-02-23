@@ -12,14 +12,13 @@ from utilities.customLogger import LogGen
 import string
 import random
 
-
+@pytest.mark.sanity
 class Test_014_course:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    #@pytest.mark.sanity
     def test_course(self, setup):
         self.logger.info("************* Test_014_course **********")
         self.driver = setup
@@ -98,7 +97,6 @@ class Test_014_course:
         self.driver.close()
         self.logger.info("******* Ending Add course test **********")
 
-    #@pytest.mark.sanity
     def test_searchcourse(self, setup):
         self.logger.info("************* Test_010_search course **********")
         self.driver = setup

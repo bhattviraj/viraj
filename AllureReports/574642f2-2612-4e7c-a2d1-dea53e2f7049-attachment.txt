@@ -1,0 +1,3 @@
+[32mINFO    [0m root:test_01signup_static.py:20 ************* Test_003_Signup **********
+[32mINFO    [0m root:test_01signup_static.py:25 ******* Starting Signup **********
+[32mINFO    [0m root:test_01signup_static.py:29 ************* Providing customer info **********

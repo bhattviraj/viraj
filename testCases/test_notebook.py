@@ -10,14 +10,14 @@ from pageObjects.NotebookPage import notebook
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
+
+@pytest.mark.sanity
 class Test_014_notebook:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    #@unittest.skip
-    #@pytest.mark.sanity
     def test_notebook(self, setup):
         self.logger.info("************* Test_014_notebook **********")
         self.driver = setup
@@ -38,7 +38,7 @@ class Test_014_notebook:
         time.sleep(2)
         self.notebook.clickOnNotebookMenu()  # Click on Menu Item
         time.sleep(5)
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);") #Scroll Page upto Bottom
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # Scroll Page upto Bottom
         time.sleep(4)
         self.notebook.drpSyllabus()
         time.sleep(3)
@@ -72,9 +72,9 @@ class Test_014_notebook:
         self.driver.close()
         self.logger.info("******* Ending Add notebook test **********")
 
-    def test_searchnotebook(self,setup):
+    def test_searchnotebook(self, setup):
         self.logger.info("************* Test_018_notebook **********")
-        self.driver=setup
+        self.driver = setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 

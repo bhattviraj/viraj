@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_postjob.py:87 ************* Test_008_search Job **********
+[32mINFO    [0m root:test_postjob.py:96 ************* Login successful **********
+[32mINFO    [0m root:test_postjob.py:98 ******* Starting Search Post Test **********
+[32mINFO    [0m root:test_postjob.py:104 ************* Search Post Job**********
+[32mINFO    [0m root:test_postjob.py:111 ************* Searching Post **********
+[32mINFO    [0m root:test_postjob.py:113 ********* Search Post job validation started *****************
+[32mINFO    [0m root:test_postjob.py:121 ********* Test Passed *********
+[32mINFO    [0m root:test_postjob.py:128 ******* Ending test **********

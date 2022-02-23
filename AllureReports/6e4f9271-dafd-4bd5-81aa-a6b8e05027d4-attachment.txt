@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_find_tutor.py:330 ************* Test_006_Find tutor with city **********
+[32mINFO    [0m root:test_find_tutor.py:339 ************* Login successful **********
+[32mINFO    [0m root:test_find_tutor.py:341 ******* Starting Find Tutor Test **********
+[32mINFO    [0m root:test_find_tutor.py:347 ************* Search Tutor**********
+[32mINFO    [0m root:test_find_tutor.py:354 ************* Searching Tutor **********
+[32mINFO    [0m root:test_find_tutor.py:356 ********* Find Tutor validation started *****************
+[32mINFO    [0m root:test_find_tutor.py:364 ********* Find Tutor Test Passed *********
+[32mINFO    [0m root:test_find_tutor.py:376 ******* Ending Find Tutor test **********

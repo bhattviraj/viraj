@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_course.py:150 ************* Test_018_course **********
+[32mINFO    [0m root:test_course.py:159 ************* Login successful **********
+[32mINFO    [0m root:test_course.py:161 ******* Starting Delete course Test **********
+[32mINFO    [0m root:test_course.py:169 *************Delete course**********
+[32mINFO    [0m root:test_course.py:175 *************Delete course **********
+[32mINFO    [0m root:test_course.py:177 *********Delete course validation started *****************
+[32mINFO    [0m root:test_course.py:185 ********* Test Passed *********
+[32mINFO    [0m root:test_course.py:192 ******* Ending test **********

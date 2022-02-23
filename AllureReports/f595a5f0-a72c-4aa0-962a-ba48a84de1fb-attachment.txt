@@ -1,0 +1,7 @@
+[32mINFO    [0m root:test_notebook.py:22 ************* Test_014_notebook **********
+[32mINFO    [0m root:test_notebook.py:32 ************* Login successful **********
+[32mINFO    [0m root:test_notebook.py:34 ******* Starting Add notebook Test **********
+[32mINFO    [0m root:test_notebook.py:56 ************* Saving notebook info **********
+[32mINFO    [0m root:test_notebook.py:58 ********* Add notebook validation started *****************
+[32mINFO    [0m root:test_notebook.py:66 ********* Add  notebook Test Passed *********
+[32mINFO    [0m root:test_notebook.py:73 ******* Ending Add notebook test **********

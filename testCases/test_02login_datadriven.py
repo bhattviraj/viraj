@@ -8,12 +8,13 @@ from utilities.customLogger import LogGen
 from utilities import XLUtils
 import time
 
+@pytest.mark.sanity
+@allure.title("Login Testcases")
 class Test_002_DDT_Login():
     baseURL = ReadConfig.getApplicationURL()
     path = ".//TestData/LoginData.xlsx"
     logger = LogGen.loggen()  # Logger
 
-    #@pytest.mark.sanity
     def test_login_ddt(self, setup):
         self.logger.info("******* Starting Test_002_DDT_Login Test **********")
         self.logger.info("******* Starting Login DDT Test **********")

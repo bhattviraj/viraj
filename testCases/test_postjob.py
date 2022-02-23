@@ -1,21 +1,24 @@
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
 from pageObjects.AddPostJob import AddPostJob
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-import string
-import random
 import warnings
+
 warnings.filterwarnings("ignore")
 
+
+@pytest.mark.sanity
 class Test_0008_postJob:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    #@pytest.mark.sanity
     def test_postJob(self, setup):
         self.logger.info("************* Test_008_PostJob **********")
         self.driver = setup
@@ -54,9 +57,9 @@ class Test_0008_postJob:
         self.postjob.drpMode()
         self.postjob.radioTeachType()
         self.postjob.setTopic("Hindi Basic")
-        #self.postjob.setStarTime("09:00 am")
+        # self.postjob.setStarTime("09:00 am")
 
-        #self.postjob.setEndTime("10:00 am")
+        # self.postjob.setEndTime("10:00 am")
 
         self.postjob.setRequirements("Test requirements")
         self.postjob.clickOnSubmit()
@@ -66,7 +69,7 @@ class Test_0008_postJob:
 
         self.logger.info("********* Add customer validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
         if 'Job Posted Successfully.' in self.msg:
             assert True
@@ -80,10 +83,9 @@ class Test_0008_postJob:
         self.driver.close()
         self.logger.info("******* Ending Add Post Job test **********")
 
-    #@pytest.mark.sanity
-    def test_searchJob(self,setup):
+    def test_searchJob(self, setup):
         self.logger.info("************* Test_008_search Job **********")
-        self.driver=setup
+        self.driver = setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
@@ -96,7 +98,7 @@ class Test_0008_postJob:
         self.logger.info("******* Starting Search Post Test **********")
         self.postjob = AddPostJob(self.driver)
         time.sleep(5)
-        self.postjob.clickOnPostSearchJobMenu() # Click on Menu Item
+        self.postjob.clickOnPostSearchJobMenu()  # Click on Menu Item
         time.sleep(5)
 
         self.logger.info("************* Search Post Job**********")
@@ -110,7 +112,7 @@ class Test_0008_postJob:
 
         self.logger.info("********* Search Post job validation started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
         if "Viraj" in self.msg:

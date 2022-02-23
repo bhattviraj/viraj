@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_course.py:101 ************* Test_010_search course **********
+[32mINFO    [0m root:test_course.py:110 ************* Login successful **********
+[32mINFO    [0m root:test_course.py:112 ******* Starting Search Post Test **********
+[32mINFO    [0m root:test_course.py:120 ************* Search course**********
+[32mINFO    [0m root:test_course.py:127 ************* Searching Post **********
+[32mINFO    [0m root:test_course.py:129 ********* Search course validation started *****************
+[32mINFO    [0m root:test_course.py:137 ********* Test Passed *********
+[32mINFO    [0m root:test_course.py:147 ******* Ending test **********

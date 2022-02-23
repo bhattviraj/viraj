@@ -1,0 +1,30 @@
+<qa:environment xmlns:qa="urn:model.commons.qatools.yandex.ru">
+    <id>1</id>
+    <name>Allure Tutorpark Project Report</name>
+    <parameter>
+        <name>Browser</name>
+        <key>Browser</key>
+        <value>Google Chrome</value>
+    </parameter>
+    <parameter>
+        <name>Test stand</name>
+        <key>Test stand</key>
+        <value>https://tutorpark.ssavts.in/#/</value>
+    </parameter>
+    <parameter>
+        <name>Automation Tool</name>
+        <key>Automation Tool</key>
+        <value>Selenium and Selenium Webdriver</value>
+    </parameter>
+    <parameter>
+        <name>Framework</name>
+        <key>Framework</key>
+        <value>Hybrid Framework</value>
+    </parameter>
+    <parameter>
+        <name>Tester</name>
+        <key>Tester</key>
+        <value>Viraj</value>
+    </parameter>
+
+</qa:environment>

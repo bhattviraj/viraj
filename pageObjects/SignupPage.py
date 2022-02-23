@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 class Signup:
     # Signup
     # lnk_menu_name = ""
-    txtFirstName_name = "first_name"
+    txtFirstName_name = "//*[@id='root']/div/div/div/div/div/div[2]/div/form/div[2]/div[1]/div/div/input"
     txtLastName_name = "last_name"
     txtEmail_name = "email"
     txtPhone_name = "phone"
@@ -29,8 +29,8 @@ class Signup:
     #    self.driver.find_element_by_link_text(self.lnkTodo_menu_name).click()
 
     def setFirstname(self, firstname):
-        self.driver.find_element(By.NAME, self.txtFirstName_name).clear()
-        self.driver.find_element(By.NAME, self.txtFirstName_name).send_keys(firstname)
+        self.driver.find_element(By.XPATH, self.txtFirstName_name).clear()
+        self.driver.find_element(By.XPATH, self.txtFirstName_name).send_keys(firstname)
 
     def setLastname(self, lastname):
         self.driver.find_element(By.NAME, self.txtLastName_name).clear()

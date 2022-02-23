@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_notebook.py:122 ************* Test_018_notebook **********
+[32mINFO    [0m root:test_notebook.py:131 ************* Login successful **********
+[32mINFO    [0m root:test_notebook.py:133 ******* Starting Delete Notebook Test **********
+[32mINFO    [0m root:test_notebook.py:141 *************Delete Notebook**********
+[32mINFO    [0m root:test_notebook.py:145 *************Delete Notebook **********
+[32mINFO    [0m root:test_notebook.py:147 *********Delete Notebook validation started *****************
+[32mINFO    [0m root:test_notebook.py:155 ********* Test Passed *********
+[32mINFO    [0m root:test_notebook.py:162 ******* Ending test **********

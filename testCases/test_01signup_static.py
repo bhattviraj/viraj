@@ -3,15 +3,11 @@ import time
 import allure
 from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
-
-from pageObjects.LoginPage import LoginPage
 from pageObjects.SignupPage import Signup
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-import string
-import random
-
-#@pytest.mark.sanity
+@allure.title("Signup Testcase")
+@pytest.mark.sanity
 class Test_003_signup:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
@@ -28,13 +24,13 @@ class Test_003_signup:
         self.driver.get("http://tutorpark.ssavts.in/#/register")
         self.logger.info("******* Starting Signup **********")
         self.signup = Signup(self.driver)
-        time.sleep(8)
+        time.sleep(10)
 
         self.logger.info("************* Providing customer info **********")
 
         self.signup.setFirstname("Viraj")
         self.signup.setLastname("Bhatt")
-        self.signup.setEmail("viraj541@dasinfomedia.com")
+        self.signup.setEmail("viraj12@dasinfomedia.com")
         self.signup.setPhone("8965437643")
         self.signup.setAadhar_id("1234567890123456")
         self.signup.setPassword("Viraj123")
@@ -43,6 +39,8 @@ class Test_003_signup:
         self.signup.setDrpState("Gujarat")
         self.signup.setCity("Ahmedabad")
         self.signup.setPincode("123456")
+        time.sleep(2)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # Scroll Page upto Bottom
         time.sleep(2)
         self.signup.clickOnSignup()
         time.sleep(3)

@@ -1,0 +1,7 @@
+[32mINFO    [0m root:test_library.py:25 ************* Test_014_library **********
+[32mINFO    [0m root:test_library.py:35 ************* Login successful **********
+[32mINFO    [0m root:test_library.py:37 ******* Starting Add library Test **********
+[32mINFO    [0m root:test_library.py:69 ************* Saving library info **********
+[32mINFO    [0m root:test_library.py:71 ********* Add library validation started *****************
+[32mINFO    [0m root:test_library.py:80 ********* Add  library Test Passed *********
+[32mINFO    [0m root:test_library.py:87 ******* Ending Add library test **********

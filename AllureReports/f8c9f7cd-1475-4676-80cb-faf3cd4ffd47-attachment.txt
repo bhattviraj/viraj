@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_notebook.py:76 ************* Test_018_notebook **********
+[32mINFO    [0m root:test_notebook.py:85 ************* Login successful **********
+[32mINFO    [0m root:test_notebook.py:87 ******* Starting Search notebook Test **********
+[32mINFO    [0m root:test_notebook.py:95 ************* Search notebook Job**********
+[32mINFO    [0m root:test_notebook.py:102 ************* Searching notebook **********
+[32mINFO    [0m root:test_notebook.py:104 ********* Search notebook validation started *****************
+[32mINFO    [0m root:test_notebook.py:112 ********* Test Passed *********
+[32mINFO    [0m root:test_notebook.py:119 ******* Ending test **********
