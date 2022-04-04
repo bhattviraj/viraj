@@ -110,6 +110,9 @@ class Test_014_notebook:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
+        elif "Notebook data not available..." in self.msg:
+            assert True
+            self.logger.info("********* Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_Searchnotebook_scr.png")  # Screenshot
             self.logger.error("********* Search notebook Test Failed ************")
@@ -124,6 +127,7 @@ class Test_014_notebook:
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
 
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         self.lp = LoginPage(self.driver)
         self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)
@@ -139,20 +143,16 @@ class Test_014_notebook:
         time.sleep(5)
 
         self.logger.info("*************Delete Notebook**********")
-
         self.notebook.clickOnDelete()
         time.sleep(3)
         self.logger.info("*************Delete Notebook **********")
 
         self.logger.info("*********Delete Notebook validation started *****************")
-
-        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
-        print(self.msg)
-
-        if "Notebook deleted successfully from database." in self.msg:
-            assert True
+        self.msg1 = self.driver.find_element(By.TAG_NAME, "body").text
+        if "Notebook deleted successfully from database." in self.msg1:
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
+            assert True
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_Searchnotebook_scr.png")  # Screenshot
             self.logger.error("*********Delete My Test Failed ************")

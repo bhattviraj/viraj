@@ -1,19 +1,22 @@
 import pytest
 import time
+
+from selenium.webdriver.common.by import By
+
 from pageObjects.LoginPage import LoginPage
-from pageObjects.NotebookPage import notebook
+from pageObjects.MySessionPage import mysessions
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
 
-class Test_013_notebook:
+class Test_013_session:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()  # Logger
 
-    def test_search_notebook(self,setup):
-        self.logger.info("************* Test_013_search notebook **********")
+    def test_search_session(self,setup):
+        self.logger.info("************* Test_013_search session **********")
         self.driver=setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
@@ -24,34 +27,34 @@ class Test_013_notebook:
         self.lp.clickLogin()
         self.logger.info("************* Login successful **********")
 
-        self.logger.info("******* Starting Search  notebook Test **********")
-        self.notebook = notebook(self.driver)
-        time.sleep(5)
-        self.notebook.clickOnMoreItems() # More Items Menu
-        self.notebook.clickOnNotebookMenu() # Click on Menu Item
+        self.logger.info("******* Starting Search  session Test **********")
+        self.session = mysessions(self.driver)
         time.sleep(5)
 
-        self.logger.info("************* Search  notebook **********")
+        self.session.clickMysessionMenu() # Click on Menu Item
+        time.sleep(5)
 
-        searched_value = self.notebook.setSearchNotebook("Literature: ")
+        self.logger.info("************* Search  session **********")
+
+        searched_value = self.session.setSearchSession("Literature: ")
         time.sleep(3)
-        self.notebook.clickOnSearch()
+        self.session.clickOnSearch()
         time.sleep(3)
 
-        self.logger.info("************* Searching  notebook **********")
+        self.logger.info("************* Searching  session **********")
 
-        self.logger.info("********* Search  notebook started *****************")
+        self.logger.info("********* Search  session started *****************")
 
-        self.msg = self.driver.find_element_by_tag_name("body").text
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "Literature: " in self.msg:
+        if "Upcoming sessions data not available..." in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
-            self.logger.error("********* Search  notebook Test Failed ************")
+            self.logger.error("********* Search  session Test Failed ************")
             assert False
 
         self.driver.close()

@@ -9,21 +9,21 @@ class notebook:
     lnkNotebook_name = "Notebook"
     lnkMoreItems_xpath = "//*[@id='root']/div/div[2]/div[1]/div/div[8]/div/button"
 
-    drpOpenSyllabus_xpath = "/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[4]/form/div[1]/div[1]/div/div/div"
-    drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[10]"
+    drpOpenSyllabus_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/form/div[1]/div[1]/div/div"
+    drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[4]"
 
-    drpOpenClass_xpath = "/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[4]/form/div[1]/div[2]/div/div/div"
-    drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[2]"
+    drpOpenClass_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/form/div[1]/div[2]/div/div"
+    drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[3]"
 
-    drpOpenSubject_xpath = "/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[4]/form/div[1]/div[3]/div/div/div"
-    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[3]"
+    drpOpenSubject_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/form/div[1]/div[3]/div/div"
+    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[2]"
 
-    drpOpenTutor_xpath = "/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[4]/form/div[1]/div[4]/div/div/div"
+    drpOpenTutor_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/form/div[1]/div[4]/div/div"
     drpSelectTutor_xpath = "//div[@id='menu-tutor_id']/div[3]/ul/li[2]"
 
-    txtAreaDescription_xpath = "//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[4]/form/div[2]/div[2]/div"
+    txtAreaDescription_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/form/div[2]/div[2]/div[1]"
 
-    btnSubmit_xpath = "//div[@id='root']/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div[4]/form/div[3]/div/div/button/span"
+    btnSubmit_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/div/div[3]/form/div[3]/div/div[1]/button"
     txtSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[2]/input"
 
     btnSearch_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div/div[1]/div/div/div/div[2]/div[2]/button"

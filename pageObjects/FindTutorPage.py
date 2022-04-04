@@ -15,6 +15,9 @@ class FindTutor():
     sltgender = "gender"
     txtExperience_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[3]/div/div[7]/input"
     btnGo_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[3]/div/div[8]/button"
+    btnOpenMsgPopUp_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div/div[3]/div/div[3]/button[2]"
+    txtAreaMessage_xpath = "//*[@id='outlined-multiline-static']"
+    btnSendMessage = "/html/body/div[2]/div/div/div[2]/form/div[2]/button"
 
     def __init__(self, driver):
         self.driver = driver
@@ -59,3 +62,13 @@ class FindTutor():
 
     def clickg(self):
         self.driver.find_element(By.XPATH, self.btnGo_xpath).click()
+
+    def openMsgPopUp(self):
+        self.driver.find_element(By.XPATH, self.btnOpenMsgPopUp_xpath).click()
+
+    def setMessage(self, findtutor):
+        self.driver.find_element(By.XPATH, self.txtAreaMessage_xpath).clear()
+        self.driver.find_element(By.XPATH, self.txtAreaMessage_xpath).send_keys(findtutor)
+
+    def clickOnSendMessage(self):
+        self.driver.find_element(By.XPATH, self.btnSendMessage).click()

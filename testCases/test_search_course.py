@@ -51,6 +51,10 @@ class Test_007_searchCourse:
             assert True
             time.sleep(2)
             self.logger.info("********* Add customer Test Passed *********")
+        elif "Course data not available...":
+            time.sleep(2)
+            self.logger.info("********* Test Passed *********")
+            assert True
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
             self.logger.error("********* Search Coursetor Test Failed ************")
@@ -132,7 +136,7 @@ class Test_007_searchCourse:
 
             searched_value = self.searchcourse.drpSyllabus("CBSE")
             time.sleep(2)
-            self.searchcourse.drpClass("10th")
+            self.searchcourse.drpClass("6Th")
 
             self.searchcourse.clickg()
             time.sleep(3)
@@ -144,7 +148,7 @@ class Test_007_searchCourse:
             self.msg = self.driver.find_element(By.TAG_NAME, "body").text
             print(self.msg)
 
-            if "10th" in self.msg:
+            if "6Th" in self.msg:
                 assert True
                 time.sleep(2)
                 self.logger.info("********* Search Coursetor Test Passed *********")
@@ -184,9 +188,9 @@ class Test_007_searchCourse:
 
             searched_value = self.searchcourse.drpSyllabus("CBSE")
             time.sleep(2)
-            self.searchcourse.drpClass("10th")
+            self.searchcourse.drpClass("6Th")
             time.sleep(2)
-            self.searchcourse.drpSubject("Network")
+            self.searchcourse.drpSubject("Account")
             self.searchcourse.clickg()
             time.sleep(3)
 
@@ -197,11 +201,11 @@ class Test_007_searchCourse:
             self.msg = self.driver.find_element(By.TAG_NAME, "body").text
             print(self.msg)
 
-            if "Network" in self.msg:
+            if "Account" in self.msg:
                 assert True
                 time.sleep(2)
-                self.logger.info("********* Search Coursetor Test Passed *********")
-            elif "Search Coursetor data not available..." in self.msg:
+                self.logger.info("********* Search Course Test Passed *********")
+            elif "Course data not available..." in self.msg:
                 assert True
                 time.sleep(2)
                 self.logger.info(

@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_library.py:298 ************* Test_018_library **********
+[32mINFO    [0m root:test_library.py:307 ************* Login successful **********
+[32mINFO    [0m root:test_library.py:309 ******* Starting Delete library Test **********
+[32mINFO    [0m root:test_library.py:317 *************Delete library**********
+[32mINFO    [0m root:test_library.py:323 *************Delete library **********
+[32mINFO    [0m root:test_library.py:325 *********Delete library validation started *****************
+[32mINFO    [0m root:test_library.py:333 ********* Test Passed *********
+[32mINFO    [0m root:test_library.py:340 ******* Ending test **********

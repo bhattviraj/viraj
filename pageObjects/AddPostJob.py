@@ -9,13 +9,13 @@ class AddPostJob:
     drpSelectSyllsbus_xpath = "//*[contains(text(), 'CBSE')]"
 
     drpOpenClass_xpath = "/html/body/div[2]/div/div/div[2]/form/div[1]/div[2]/div/div"
-    drpSelectClass_xpah = "//*[contains(text(), '10th')]"
+    drpSelectClass_xpah = "//*[contains(text(), '6Th')]"
 
     drpOpenSubject_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[1]/div/div"
-    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[4]"
+    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[2]"
 
     drpOpenMode_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[2]/div"
-    drpSelectMode_xpath = "//div[@id='menu-mode']/div[3]/ul/li[3]"
+    drpSelectMode_xpath = "//div[@id='menu-mode']/div[3]/ul/li[2]"
 
     btnTeachTypeRadio_xpath = "(//input[@name='type'])[2]"
 

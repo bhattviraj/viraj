@@ -110,7 +110,7 @@ class Test_019_library:
 
         self.logger.info("************* Search library**********")
 
-        searched_value = self.library.setSearchlibrary("English")
+        searched_value = self.library.setSearchlibrary("Account")
         time.sleep(3)
         self.library.clickOnSearch()
         time.sleep(3)
@@ -122,11 +122,11 @@ class Test_019_library:
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "English" in self.msg:
+        if "Account" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
-        elif "library data not available..." in self.msg:
+        elif "Library data not available..." in self.msg:
             assert True
             self.logger.info("********* Test Passed *********")
         else:
@@ -213,7 +213,7 @@ class Test_019_library:
 
         self.library.drpSearchSyllabus("CBSE")
         time.sleep(3)
-        self.library.drpSearchClass("10th")
+        self.library.drpSearchClass("6Th")
         time.sleep(3)
         self.library.clickOnGo()
         time.sleep(3)
@@ -224,7 +224,7 @@ class Test_019_library:
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "10th" in self.msg:
+        if "6Th" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
@@ -265,9 +265,9 @@ class Test_019_library:
 
         self.library.drpSearchSyllabus("CBSE")
         time.sleep(3)
-        self.library.drpSearchClass("10th")
+        self.library.drpSearchClass("6Th")
         time.sleep(3)
-        self.library.drpSearchSubject("Science")
+        self.library.drpSearchSubject("Account")
         time.sleep(3)
         self.library.clickOnGo()
         time.sleep(3)
@@ -278,7 +278,7 @@ class Test_019_library:
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "Science" in self.msg:
+        if "Account" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Test Passed *********")

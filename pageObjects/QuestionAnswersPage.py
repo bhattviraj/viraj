@@ -4,13 +4,13 @@ class questionanswers:
     btnAdd_xpath = "//*[@id='root']/div/div[2]/div[2]/div[1]/div/div[1]/div/div/div[1]/div/p/button"
 
     drpOpenSyllabus_xpath = "/html/body/div[2]/div/div/div[2]/form/div[1]/div[1]/div/div"
-    drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[10]"
+    drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[4]"
 
     drpOpenClass_xpath = "/html/body/div[2]/div/div/div[2]/form/div[1]/div[2]/div/div"
     drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[2]"
 
     drpOpenSubject_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[1]/div/div"
-    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[4]"
+    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[2]"
 
     txtTopic_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[2]/div/div/input"
 

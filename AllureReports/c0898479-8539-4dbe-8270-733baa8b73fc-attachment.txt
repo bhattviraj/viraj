@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_find_tutor.py:380 ************* Test_006_FindTutor **********
+[32mINFO    [0m root:test_find_tutor.py:389 ************* Login successful **********
+[32mINFO    [0m root:test_find_tutor.py:391 ******* Starting Find Tutor Test **********
+[32mINFO    [0m root:test_find_tutor.py:397 ************* Search Tutorpark**********
+[32mINFO    [0m root:test_find_tutor.py:404 ************* Searching Tutor **********
+[32mINFO    [0m root:test_find_tutor.py:406 ********* Find Tutor validation started *****************
+[32mINFO    [0m root:test_find_tutor.py:414 ********* Add customer Test Passed *********
+[32mINFO    [0m root:test_find_tutor.py:424 ******* Ending Add customer test **********

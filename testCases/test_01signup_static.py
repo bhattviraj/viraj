@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from pageObjects.SignupPage import Signup
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
+
 @allure.title("Signup Testcase")
 @pytest.mark.sanity
 class Test_003_signup:
@@ -32,7 +33,7 @@ class Test_003_signup:
         self.signup.setLastname("Bhatt")
         self.signup.setEmail("viraj12@dasinfomedia.com")
         self.signup.setPhone("8965437643")
-        self.signup.setAadhar_id("1234567890123456")
+        self.signup.setAadhar_id("123456789012")
         self.signup.setPassword("Viraj123")
         self.signup.setConfirmPassword("Viraj123")
         self.signup.setAdress("Address Ahmedabad")
@@ -47,7 +48,7 @@ class Test_003_signup:
 
         self.logger.info("************* Saving customer info **********")
 
-        self.logger.info("********* Add customer validation started *****************")
+        self.logger.info("********* validation started *****************")
 
         exp_url = "http://tutorpark.ssavts.in/#/register-success"
         act_url = self.driver.current_url
@@ -62,7 +63,7 @@ class Test_003_signup:
             assert True
             self.logger.info("********* Signup Test Passed *********")
         else:
-            allure.attach(self.driver.get_screenshot_as_png(), name="TestTodoScreen",
+            allure.attach(self.driver.get_screenshot_as_png(), name="TestSignupScreen",
                           attachment_type=AttachmentType.PNG)
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
             self.logger.error("********* Signup Test Failed ************")

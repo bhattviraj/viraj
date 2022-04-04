@@ -1,0 +1,7 @@
+[32mINFO    [0m root:test_02login_datadriven.py:19 ******* Starting Test_002_DDT_Login Test **********
+[32mINFO    [0m root:test_02login_datadriven.py:20 ******* Starting Login DDT Test **********
+[32mINFO    [0m root:test_02login_datadriven.py:63 **** passed ****
+[32mINFO    [0m root:test_02login_datadriven.py:63 **** passed ****
+[32mINFO    [0m root:test_02login_datadriven.py:63 **** passed ****
+[32mINFO    [0m root:test_02login_datadriven.py:60 **** failed ****
+[1m[31mERROR   [0m root:test_02login_datadriven.py:71 ******* DDT Login test failed **********

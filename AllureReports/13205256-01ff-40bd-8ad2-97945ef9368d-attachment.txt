@@ -1,0 +1,8 @@
+[32mINFO    [0m root:test_find_tutor.py:70 ************* Test_006_Find tutor with city **********
+[32mINFO    [0m root:test_find_tutor.py:79 ************* Login successful **********
+[32mINFO    [0m root:test_find_tutor.py:81 ******* Starting Find Tutor Test **********
+[32mINFO    [0m root:test_find_tutor.py:87 ************* Search Tutorpark**********
+[32mINFO    [0m root:test_find_tutor.py:94 ************* Searching Tutor **********
+[32mINFO    [0m root:test_find_tutor.py:96 ********* Find Tutor validation started *****************
+[32mINFO    [0m root:test_find_tutor.py:108 ********* Find Tutor Test Passed because return Find Tutor data not available...*********
+[32mINFO    [0m root:test_find_tutor.py:116 ******* Ending Find Tutor test **********

@@ -1,0 +1,3 @@
+[32mINFO    [0m root:test_course.py:23 ************* Test_014_course **********
+[32mINFO    [0m root:test_course.py:33 ************* Login successful **********
+[32mINFO    [0m root:test_course.py:35 ******* Starting Add course Test **********

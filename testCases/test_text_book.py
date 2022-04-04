@@ -55,7 +55,7 @@ class Test_0009_TextBook:
         time.sleep(3)
         self.textbook.drpSubject()
         time.sleep(2)
-        self.textbook.setBookName("Network")
+        self.textbook.setBookName("Account")
         self.textbook.setBookImage("D:/Documents/Downloads/network.jpg")
         self.textbook.setExternalLink("http://www.africau.edu/images/default/sample.pdf")
         self.textbook.setDescription("Test Description")
@@ -152,7 +152,7 @@ class Test_0009_TextBook:
 
         searched_value = self.searchtextbook.drpSyllabus("CBSE")
         time.sleep(3)
-        self.searchtextbook.drpClass("10th")
+        self.searchtextbook.drpClass("6Th")
         self.searchtextbook.clickTextBookSearchGo()
         time.sleep(3)
 
@@ -163,7 +163,7 @@ class Test_0009_TextBook:
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "10th" in self.msg:
+        if "6Th" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Search Text Book Test Passed *********")
@@ -203,9 +203,9 @@ class Test_0009_TextBook:
 
         searched_value = self.searchtextbook.drpSyllabus("CBSE")
         time.sleep(3)
-        self.searchtextbook.drpClass("10th")
+        self.searchtextbook.drpClass("6Th")
         time.sleep(3)
-        self.searchtextbook.drpSubject("Network")
+        self.searchtextbook.drpSubject("Account")
         self.searchtextbook.clickTextBookSearchGo()
         time.sleep(3)
 
@@ -216,7 +216,7 @@ class Test_0009_TextBook:
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "Network" in self.msg:
+        if "Account" in self.msg:
             assert True
             time.sleep(2)
             self.logger.info("********* Search Text Book Test Passed *********")
@@ -254,7 +254,7 @@ class Test_0009_TextBook:
 
         self.logger.info("************* Search Text Book **********")
 
-        searched_value = self.searchtextbook.setSearchByBookName("Network")
+        searched_value = self.searchtextbook.setSearchByBookName("Account")
 
         self.searchtextbook.clickTextBookSearchGo()
         time.sleep(3)

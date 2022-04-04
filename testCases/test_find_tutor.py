@@ -40,7 +40,7 @@ class Test_006_FindTutor:
 
         self.logger.info("************* Search Tutorpark**********")
 
-        searched_value = self.findtutor.setSearchbox("viraj")
+        searched_value = self.findtutor.setSearchbox("vijay")
 
         self.findtutor.clickSearch()
         time.sleep(3)
@@ -52,10 +52,10 @@ class Test_006_FindTutor:
         self.msg = self.driver.find_element(By.TAG_NAME, "body").text
         print(self.msg)
 
-        if "Viraj" in self.msg:
+        if "Vijay" in self.msg:
             assert True
             time.sleep(2)
-            self.logger.info("********* Add customer Test Passed *********")
+            self.logger.info("********* Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
             self.logger.error("********* Find Tutor Test Failed ************")
@@ -190,7 +190,7 @@ class Test_006_FindTutor:
 
         self.findtutor.drpSyllabus("CBSE")
         time.sleep(3)
-        self.findtutor.drpClass("10th")
+        self.findtutor.drpClass("6Th")
 
         self.findtutor.clickg()
         time.sleep(3)
@@ -243,9 +243,9 @@ class Test_006_FindTutor:
 
         searched_value = self.findtutor.drpSyllabus("CBSE")
         time.sleep(2)
-        self.findtutor.drpClass("10th")
+        self.findtutor.drpClass("6Th")
         time.sleep(2)
-        self.findtutor.drpSubject("Network")
+        self.findtutor.drpSubject("Account")
         self.findtutor.clickg()
         time.sleep(3)
 

@@ -121,6 +121,7 @@ class Test_0018_Timeline:
         self.driver=setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
+        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
 
         self.lp = LoginPage(self.driver)
         self.lp.setUserName(self.username)
@@ -135,26 +136,30 @@ class Test_0018_Timeline:
         time.sleep(5)
 
         self.logger.info("************* Repost Timeline**********")
-
-        self.timeline.clickOnoption()
-        time.sleep(2)
-        self.timeline.clickOnTimelineRepost()
-        time.sleep(3)
-        self.logger.info("************* Repost Timeline **********")
-
-        self.logger.info("********* Repost Timeline validation started *****************")
-
-        self.msg = self.driver.find_element(By.TAG_NAME, "body").text
-        print(self.msg)
-
-        if "Timeline posted successfully." in self.msg:
-            assert True
+        if "TimeLine data not available..." in self.msg:
             time.sleep(2)
             self.logger.info("********* Test Passed *********")
+            assert True
+            self.driver.close()
         else:
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_SearchTimeline_scr.png")  # Screenshot
-            self.logger.error("********* Search Timeline Test Failed ************")
-            assert False
+            self.timeline.clickOnoption()
+            time.sleep(2)
+            self.timeline.clickOnTimelineRepost()
+            time.sleep(3)
+            self.logger.info("************* Repost Timeline **********")
+
+            self.logger.info("********* Repost Timeline validation started *****************")
+
+
+
+            if "Timeline posted successfully." in self.msg:
+                assert True
+                time.sleep(2)
+                self.logger.info("********* Test Passed *********")
+            else:
+                self.driver.save_screenshot(".\\Screenshots\\" + "test_SearchTimeline_scr.png")  # Screenshot
+                self.logger.error("********* Search Timeline Test Failed ************")
+                assert False
 
         self.driver.close()
         self.logger.info("******* Ending test **********")
@@ -198,7 +203,7 @@ class Test_0018_Timeline:
             self.logger.info("********* Test Passed *********")
         else:
             self.driver.save_screenshot(".\\Screenshots\\" + "test_SearchTimeline_scr.png")  # Screenshot
-            self.logger.error("*********Delete My Test Failed ************")
+            self.logger.error("*********Delete Failed ************")
             assert False
 
         self.driver.close()

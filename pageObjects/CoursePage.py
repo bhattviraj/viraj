@@ -16,13 +16,13 @@ class course:
     radiobtnType = "(//input[@name='type'])[2]"
 
     drpOpenSyllabus_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[1]/div/div"
-    drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[10]"
+    drpSelectSyllsbus_xpath = "//div[@id='menu-syllabus_id']/div[3]/ul/li[04]"
 
     drpOpenClass_xpath = "/html/body/div[2]/div/div/div[2]/form/div[2]/div[2]/div/div"
     drpSelectClass_xpah = "//div[@id='menu-class_id']/div[3]/ul/li[2]"
 
     drpOpenSubject_xpath = "/html/body/div[2]/div/div/div[2]/form/div[3]/div[1]/div/div"
-    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[4]"
+    drpSelectSubject_xpath = "//div[@id='menu-subject_id']/div[3]/ul/li[2]"
 
     drpOpenMode_xpath = "/html/body/div[2]/div/div/div[2]/form/div[3]/div[2]/div/div"
     drpSelectMode_xpath = "//div[@id='menu-mode_of_teaching']/div[3]/ul/li[3]"

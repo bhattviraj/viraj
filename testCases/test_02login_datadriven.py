@@ -39,7 +39,7 @@ class Test_002_DDT_Login():
             time.sleep(5)
 
             act_home_url = self.driver.current_url
-            exp_home_url = "http://tutorpark.ssavts.in/#/home"
+            exp_home_url = "https://tutorpark.ssavts.in/#/home"
 
             if act_home_url == exp_home_url:
                 if self.exp == 'Pass':
