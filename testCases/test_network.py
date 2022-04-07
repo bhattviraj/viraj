@@ -1,5 +1,4 @@
 import time
-import unittest
 
 from selenium.webdriver.common.by import By
 
@@ -174,7 +173,7 @@ class Test_021_network:
             self.logger.info("********* Test Passed *********")
             assert True
         else:
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_addCustomer_scr.png")  # Screenshot
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_Network_scr.png")  # Screenshot
             self.logger.error("********* Search friend Test Failed ************")
             assert False
 
